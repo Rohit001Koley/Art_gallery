@@ -1,0 +1,104 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Artist {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  bio         String
+  nationality String
+  style       String
+  image       String
+  instagram   String?
+  website     String?
+  artworks    Artwork[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Artwork {
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique
+  artistId    String
+  artist      Artist       @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  year        String
+  medium      String
+  subject     String
+  dimensions  String
+  image       String
+  price       String?
+  description String
+  exhibitions Exhibition[] @relation("ExhibitionToArtwork")
+  enquiries   Enquiry[]
+  featured    Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Exhibition {
+  id           String    @id @default(cuid())
+  title        String
+  slug         String    @unique
+  description  String
+  banner       String
+  startDate    DateTime
+  endDate      DateTime
+  curator      String
+  artworks     Artwork[] @relation("ExhibitionToArtwork")
+  galleryImages String[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String
+  eventDate   DateTime
+  image       String?
+  location    String   @default("Aryan Art Gallery, Main Gallery Hall")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Publication {
+  id          String   @id @default(cuid())
+  title       String
+  pdf         String
+  coverImage  String
+  year        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Press {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  date      DateTime
+  source    String
+  pdf       String?
+  link      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  artworkId String
+  artwork   Artwork  @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  name      String
+  email     String
+  phone     String
+  message   String
+  createdAt DateTime @default(now())
+}
