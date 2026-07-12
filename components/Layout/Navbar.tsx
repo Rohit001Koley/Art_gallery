@@ -35,7 +35,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="w-full bg-[rgb(231,229,228)] dark:bg-[#1A1817] border-b border-[#5C1414]/10 transition-colors duration-300 relative z-40"
+        className="w-full bg-[#F5F2EB] dark:bg-[#1A1817] border-b border-[#5C1414]/10 transition-colors duration-300 relative z-40"
         style={{ height: "164px" }}
       >
         <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 flex items-center justify-between relative">
