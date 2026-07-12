@@ -2,7 +2,7 @@
 
 :root {
   color-scheme: light dark;
-  --background: #FCFBF9;
+  --background: #F5F1EA;
   --foreground: #1C1917;
   --card: #FFFFFF;
   --card-foreground: #1C1917;
@@ -69,6 +69,7 @@
 
   --font-serif: var(--font-cormorant-garamond);
   --font-sans: var(--font-inter);
+  --font-average: var(--font-average);
   
   --letter-spacing-tracking-luxury: 0.07em;
   

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MapPin, Mail, Phone, Clock, Send, Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Youtube, ArrowRight, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -18,217 +18,193 @@ export default function Footer() {
   const handleMapClick = () => {
     const mapUrl =
       process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL ||
-      "https://maps.google.com/?q=Aryan+Art+Gallery+Mayfair+London";
+      "https://maps.google.com/?q=Aryan+Art+Gallery+Defence+Colony+New+Delhi";
     window.open(mapUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <footer className="bg-black border-t border-stone-900 mt-auto font-sans text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Gallery Info & Contact Card */}
-          <div className="space-y-6">
-            <div>
-              <Link href="/" className="flex items-baseline">
-                <span className="font-serif text-amber-500">
-                  <span className="text-2xl font-bold">A</span>
-                  <span className="text-sm font-light tracking-[0.05em]">RYAN</span>
-                </span>
-                <span className="font-serif text-white ml-1">
-                  <span className="text-2xl font-bold">A</span>
-                  <span className="text-sm font-light tracking-[0.05em]">RT</span>
-                </span>
-                <span className="font-serif text-white ml-1">
-                  <span className="text-2xl font-bold">G</span>
-                  <span className="text-sm font-light tracking-[0.05em]">ALLERY</span>
-                </span>
-              </Link>
-              <p className="text-xs text-amber-500/80 mt-1 tracking-luxury uppercase font-semibold">
-                Luxury Fine Art Gallery
-              </p>
-            </div>
-            <p className="text-sm text-stone-300 leading-relaxed">
-              Exhibiting masterworks of neoclassical surrealism, textured expressionist abstraction, and structural minimalism since 2012.
-            </p>
-            <div className="space-y-3 text-sm text-stone-200">
-              <div className="flex items-start">
-                <MapPin className="h-4.5 w-4.5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
+    <footer className="w-full flex flex-col mt-auto font-sans text-white">
+      <section 
+        className="w-full bg-[#1B1712] py-16 md:py-24 px-6 lg:px-8 border-b border-[#B08442]/20"
+        style={{ minHeight: "626px" }}
+      >
+        <div className="max-w-7xl mx-auto flex flex-col justify-between h-full space-y-16">
+          
+          {/* Main Grid Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+            
+            {/* Column 1: Visit The Gallery Info */}
+            <div className="space-y-6">
+              <h3 className="font-sans font-bold text-xl uppercase tracking-[0.07em] text-white">
+                VISIT THE GALLERY
+              </h3>
+              <div 
+                className="font-sans font-medium text-white/90 space-y-3 leading-relaxed tracking-[0.07em]"
+                style={{ fontSize: "16px" }}
+              >
                 <button
                   onClick={handleMapClick}
-                  className="text-left hover:text-amber-400 transition-colors cursor-pointer leading-tight font-medium"
+                  className="text-left hover:text-[#B08442] transition-colors font-medium flex items-start gap-2"
                 >
-                  12 Mayfair Gardens, London, W1S 4NS, UK
+                  <MapPin className="h-5 w-5 mt-1 flex-shrink-0 text-[#B08442]" />
+                  <span>D-33 Defence Colony, New Delhi 110024</span>
                 </button>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-4 w-4 text-amber-500 mr-3 flex-shrink-0" />
-                <a href="tel:+442079460192" className="hover:text-amber-400 transition-colors font-medium">
-                  +44 (20) 7946 0192
-                </a>
-              </div>
-              <div className="flex items-center">
-                <Mail className="h-4 w-4 text-amber-500 mr-3 flex-shrink-0" />
-                <a href="mailto:info@aryanartgallery.com" className="hover:text-amber-400 transition-colors font-medium">
-                  info@aryanartgallery.com
-                </a>
+                <p className="pl-7">Walk-ins are welcome during opening hours.</p>
+                <p className="pl-7">
+                  For private viewings, valuation or works currently in the viewing room, we recommend an appointment.
+                </p>
               </div>
             </div>
-          </div>
 
-          {/* Navigation Links */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-luxury text-white">
-              The Gallery
-            </h4>
-            <ul className="space-y-2 text-sm text-stone-400">
-              <li>
-                <Link href="/artists" className="hover:text-amber-400 transition-colors">
-                  Artists &amp; Roster
-                </Link>
-              </li>
-              <li>
-                <Link href="/exhibitions" className="hover:text-amber-400 transition-colors">
-                  Exhibitions
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="hover:text-amber-400 transition-colors">
-                  Calendar &amp; Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/press" className="hover:text-amber-400 transition-colors">
-                  Press Releases
-                </Link>
-              </li>
-              <li>
-                <Link href="/publications" className="hover:text-amber-400 transition-colors">
-                  Publications &amp; Catalogs
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-amber-400 transition-colors">
-                  About Us &amp; Team
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Gallery Hours */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-luxury text-white">
-              Visiting Hours
-            </h4>
-            <div className="space-y-3 text-sm text-stone-400">
-              <div className="flex items-start">
-                <Clock className="h-4.5 w-4.5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-white">Monday – Friday</p>
-                  <p className="text-xs">10:00 AM – 6:00 PM</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Clock className="h-4.5 w-4.5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-white">Saturday</p>
-                  <p className="text-xs">11:00 AM – 5:00 PM</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Clock className="h-4.5 w-4.5 text-stone-600 mr-3 mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="font-semibold text-stone-500">Sunday</p>
-                  <p className="text-xs">Closed (Private Viewings Only)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Newsletter Subscription */}
-          <div className="space-y-4">
-            <h4 className="text-sm font-semibold uppercase tracking-luxury text-white">
-              Newsletter
-            </h4>
-            <p className="text-sm text-stone-400">
-              Subscribe to receive exclusive invitations to exhibition openings, catalogue releases, and private acquisitions.
-            </p>
-            {subscribed ? (
-              <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded text-amber-400 text-xs font-semibold">
-                Thank you for subscribing to our mailing list.
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="email"
-                  required
-                  placeholder="Your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-stone-900 border border-stone-800 rounded px-3 py-2 text-sm text-white placeholder-stone-500 outline-none w-full focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
-                />
-                <button
-                  type="submit"
-                  className="bg-amber-500 hover:bg-amber-600 text-black p-2 rounded flex items-center justify-center transition-all cursor-pointer flex-shrink-0"
-                  aria-label="Subscribe"
+            {/* Column 2: Telephone / Appointments / Hours / Email */}
+            <div className="space-y-10">
+              {/* Telephone & Appointments */}
+              <div className="space-y-4">
+                <h3 className="font-sans font-bold text-lg uppercase tracking-[0.07em] text-[#BFBFBF]">
+                  CONTACT & VIEWINIGS
+                </h3>
+                <div 
+                  className="font-sans font-medium text-[#BFBFBF] space-y-2 leading-relaxed tracking-[0.07em]"
+                  style={{ fontSize: "16px" }}
                 >
-                  <Send className="h-4 w-4" />
-                </button>
-              </form>
-            )}
-            {/* Social icons */}
-            <div className="pt-4 flex items-center space-x-4">
-              <a
-                href="https://facebook.com/aryanartgallery"
-                target="_blank"
-                rel="noreferrer"
-                className="text-stone-400 hover:text-amber-400 transition-colors"
-                aria-label="Facebook Link"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="https://instagram.com/aryanartgallery"
-                target="_blank"
-                rel="noreferrer"
-                className="text-stone-400 hover:text-amber-400 transition-colors"
-                aria-label="Instagram Link"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:info@aryanartgallery.com"
-                className="text-stone-400 hover:text-amber-400 transition-colors"
-                aria-label="Send Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <button
-                onClick={handleMapClick}
-                className="text-stone-400 hover:text-amber-400 transition-colors cursor-pointer"
-                aria-label="Open Gallery Map"
-              >
-                <MapPin className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-        </div>
+                  <p className="flex items-center gap-2">
+                    <Phone className="h-4.5 w-4.5 text-[#B08442]" />
+                    <span>011-41551277 / 011-41550709</span>
+                  </p>
+                  <p className="pt-2 font-semibold text-white">APPOINTMENTS</p>
+                  <p className="text-white/80">Request a private viewing</p>
+                </div>
+              </div>
 
-        {/* Copyright info */}
-        <div className="mt-16 pt-8 border-t border-stone-900 flex flex-col md:flex-row items-center justify-between text-xs text-stone-500 space-y-4 md:space-y-0">
-          <p>&copy; {new Date().getFullYear()} Aryan Art Gallery. All rights reserved.</p>
-          <div className="flex space-x-6">
-            <Link href="/about" className="hover:text-amber-400 transition-colors">
-              Visitor Information
-            </Link>
-            <Link href="/about#contact" className="hover:text-amber-400 transition-colors">
-              Acquisition Inquiries
-            </Link>
-            <button onClick={handleMapClick} className="hover:text-amber-400 transition-colors cursor-pointer">
-              Interactive Map
-            </button>
+              {/* Hours & Email */}
+              <div className="space-y-4">
+                <h3 className="font-sans font-bold text-lg uppercase tracking-[0.07em] text-[#BFBFBF]">
+                  GALLERY HOURS
+                </h3>
+                <div 
+                  className="font-sans font-medium text-[#BFBFBF] space-y-2 leading-relaxed tracking-[0.07em]"
+                  style={{ fontSize: "16px" }}
+                >
+                  <p className="flex items-center gap-2">
+                    <Clock className="h-4.5 w-4.5 text-[#B08442]" />
+                    <span>Monday - Saturday 10am - 5pm</span>
+                  </p>
+                  <p className="pt-2 font-semibold text-white">EMAIL</p>
+                  <a 
+                    href="mailto:aryanartgallery@gmail.com" 
+                    className="hover:text-[#B08442] transition-colors flex items-center gap-2"
+                  >
+                    <Mail className="h-4.5 w-4.5 text-[#B08442]" />
+                    <span>aryanartgallery@gmail.com</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 3: Mailing List Subscription */}
+            <div className="space-y-6 lg:max-w-md">
+              <h3 className="font-sans font-medium text-lg uppercase tracking-[0.2em] text-[#B08442]">
+                JOIN OUR MAILING LIST
+              </h3>
+
+              {subscribed ? (
+                <div className="p-4 bg-emerald-950/40 border border-emerald-500/30 rounded text-emerald-300 text-sm font-medium">
+                  Thank you for subscribing to our mailing list.
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="space-y-4">
+                  <div className="flex flex-col sm:flex-row gap-2 items-stretch">
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter your email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="bg-[#F5F1EA] text-[#000000] border-none px-4 py-3 text-sm placeholder-stone-600 outline-none w-full focus:ring-2 focus:ring-[#B08442] font-sans tracking-[0.1em]"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-[#B08442] hover:bg-[#966d33] text-white px-6 py-3 flex items-center justify-center transition-all cursor-pointer flex-shrink-0"
+                      aria-label="Subscribe"
+                    >
+                      <ArrowRight className="h-5 w-5" />
+                    </button>
+                  </div>
+                  <p className="text-white text-xs md:text-sm tracking-[0.1em] uppercase leading-relaxed font-sans mt-2">
+                    STAY UPDATED WITH EVENTS, EXHIBITIONS AND NEWS
+                  </p>
+                </form>
+              )}
+            </div>
+
           </div>
+
+          {/* Social Icons row (placed absolutely near bottom right on desktop) */}
+          <div className="flex items-center space-x-3 pt-8 border-t border-white/10">
+            <a
+              href="https://facebook.com/aryanartgallery"
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
+              aria-label="Facebook Link"
+            >
+              <Facebook className="h-5 w-5" />
+            </a>
+            <a
+              href="https://instagram.com/aryanartgallery"
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
+              aria-label="Instagram Link"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a
+              href="https://linkedin.com/company/aryanartgallery"
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
+              aria-label="LinkedIn Link"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://youtube.com/aryanartgallery"
+              target="_blank"
+              rel="noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
+              aria-label="YouTube Link"
+            >
+              <Youtube className="h-5 w-5" />
+            </a>
+          </div>
+
         </div>
-      </div>
+      </section>
+
+      {/* 2. Lower Footer Section (Dark Slate Brown) */}
+      <section 
+        className="w-full bg-[#1B1712] py-8 px-6 lg:px-8 flex flex-col items-center justify-center text-center space-y-4"
+        style={{ minHeight: "153px" }}
+      >
+        <div className="w-full max-w-5xl flex flex-col items-center space-y-2">
+          
+          <h2 className="font-serif font-medium text-[#B08442] tracking-normal leading-none" style={{ fontSize: "clamp(24px, 4vw, 50px)" }}>
+            ARYAN ART GALLERY
+          </h2>
+          
+          <p className="font-sans font-light text-[#B08442] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(12px, 2vw, 21px)" }}>
+            INDIAN OLD, MODERN & CONTEMPORARY ARTS
+          </p>
+
+          <div className="w-full max-w-4xl h-[1px] bg-[#B08442]/30 my-2" />
+
+          <p className="font-sans font-light text-[#E0E0E0] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(10px, 1.5vw, 18px)" }}>
+            &copy; 2026 ARYAN ART GALLERY &middot; ALL RIGHTS RESERVED
+          </p>
+
+        </div>
+      </section>
     </footer>
   );
 }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, MapPin, Menu, X, Sun, Moon, PhoneCall } from "lucide-react";
+import { Search, Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import SearchModal from "../SearchModal";
 
@@ -13,27 +13,10 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Sync mounting to prevent hydration mismatches
   useEffect(() => {
     setMounted(true);
-
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close mobile menu on page change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -45,13 +28,6 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
   ];
 
-  const handleMapClick = () => {
-    const mapUrl =
-      process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL ||
-      "https://maps.google.com/?q=Aryan+Art+Gallery+Mayfair+London";
-    window.open(mapUrl, "_blank", "noopener,noreferrer");
-  };
-
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
@@ -59,162 +35,144 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          isScrolled
-            ? "border-b border-stone-700/50 shadow-sm py-3"
-            : "py-5"
-        }`}
-        style={{
-          backgroundColor: "rgb(92, 20, 20)",
-        }}
+        className="w-full bg-[rgb(231,229,228)] dark:bg-[#1A1817] border-b border-[#5C1414]/10 transition-colors duration-300 relative z-40"
+        style={{ height: "164px" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-baseline group">
-            <span className="font-serif text-amber-300 transition-all duration-300">
-              <span className="text-2xl md:text-3xl font-bold">A</span>
-              <span className="text-sm md:text-lg font-light tracking-[0.05em]">RYAN</span>
-            </span>
-            <span className="font-serif text-white transition-all duration-300 group-hover:text-amber-200 ml-1">
-              <span className="text-2xl md:text-3xl font-bold">A</span>
-              <span className="text-sm md:text-lg font-light tracking-[0.05em]">RT</span>
-            </span>
-            <span className="font-serif text-white transition-all duration-300 group-hover:text-amber-200 hidden sm:inline ml-1">
-              <span className="text-2xl md:text-3xl font-bold">G</span>
-              <span className="text-sm md:text-lg font-light tracking-[0.05em]">ALLERY</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8 text-white">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-xs font-semibold tracking-luxury uppercase transition-all relative py-1 ${
-                    isActive
-                      ? "text-amber-300 font-bold"
-                      : "text-stone-100 hover:text-amber-200"
-                  }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 w-full h-[1.5px] bg-amber-300 rounded-full" />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-2 md:space-x-4 text-white">
-            {/* Search Toggle */}
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="p-2 text-stone-100 hover:text-amber-200 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-              aria-label="Search site"
+        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 flex items-center justify-between relative">
+          
+          {/* Left Side: Logo & Subtitle */}
+          <div className="flex flex-col justify-center h-full py-4 select-none">
+            <Link href="/" className="group block">
+              <h1 
+                className="font-serif font-semibold text-[#5C1414] dark:text-[#E2C293] leading-none transition-all group-hover:opacity-90"
+                style={{
+                  fontSize: "clamp(28px, 4vw, 64px)",
+                  letterSpacing: "-0.02em"
+                }}
+              >
+                ARYAN ART GALLERY
+              </h1>
+            </Link>
+            <p 
+              className="font-sans font-medium text-[#5C1414]/90 dark:text-[#E2C293]/80 uppercase mt-2 tracking-[0.07em]"
+              style={{
+                fontSize: "clamp(10px, 1.2vw, 21px)",
+                lineHeight: "1.2"
+              }}
             >
-              <Search className="h-4.5 w-4.5" />
-            </button>
+              INDIAN OLD, MODERN & CONTEMPORARY ARTS
+            </p>
+          </div>
 
-            {/* Google Maps External Trigger */}
-            <button
-              onClick={handleMapClick}
-              className="p-2 text-stone-100 hover:text-amber-200 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-              aria-label="View gallery location on Google Maps"
-            >
-              <MapPin className="h-4.5 w-4.5" />
-            </button>
-
-            {/* Theme Toggle */}
+          {/* Right Side: Actions & Triggers */}
+          <div className="flex items-center space-x-6 md:space-x-12">
+            
+            {/* Theme Toggle (subtle, elegant) */}
             {mounted && (
               <button
                 onClick={toggleTheme}
-                className="p-2 text-stone-100 hover:text-amber-200 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-                aria-label="Toggle visual theme"
+                className="text-[#5C1414] dark:text-[#E2C293] hover:opacity-80 transition-opacity cursor-pointer p-1"
+                aria-label="Toggle theme"
               >
                 {resolvedTheme === "dark" ? (
-                  <Sun className="h-4.5 w-4.5 text-amber-300" />
+                  <Sun className="h-5 w-5" />
                 ) : (
-                  <Moon className="h-4.5 w-4.5 text-stone-100" />
+                  <Moon className="h-5 w-5" />
                 )}
               </button>
             )}
 
-            {/* Contact CTA */}
-            <Link
-              href="/about#contact"
-              className="hidden sm:flex items-center px-4 py-2 border border-white hover:bg-white hover:text-stone-900 text-white transition-all duration-300 text-xs font-semibold uppercase tracking-luxury rounded-sm"
+            {/* SEARCH Text trigger */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="hidden md:flex items-center font-sans text-xl font-normal tracking-[0.07em] text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer uppercase gap-2 bg-transparent border-none"
             >
-              <PhoneCall className="h-3.5 w-3.5 mr-2" />
-              Contact
-            </Link>
+              <Search className="h-5 w-5 stroke-[1.5]" />
+              SEARCH
+            </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* MENU Text trigger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 lg:hidden text-stone-100 hover:text-amber-200 hover:bg-white/10 rounded-full transition-colors cursor-pointer"
-              aria-label="Toggle menu"
+              className="flex items-center font-sans text-xl font-normal tracking-[0.07em] text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer uppercase gap-2 bg-transparent border-none"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <Menu className="h-5 w-5 stroke-[1.5]" />
+              MENU
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Drawer */}
+      {/* Drawer Overlay Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-30 lg:hidden font-sans">
-          {/* Overlay */}
+        <div className="fixed inset-0 z-50 flex justify-end font-sans">
+          {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-neutral-950/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Drawer Box */}
-          <nav 
-            className="fixed top-[65px] right-0 bottom-0 w-3/4 max-w-xs border-l border-stone-700/50 shadow-2xl flex flex-col p-6 space-y-4 text-white"
-            style={{
-              backgroundColor: "rgb(92, 20, 20)",
-            }}
-          >
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-sm font-semibold tracking-luxury uppercase py-2 border-b border-stone-500/40 transition-colors ${
-                    isActive ? "text-amber-300 font-bold" : "text-stone-100 hover:text-amber-200"
-                  }`}
+          {/* Drawer panel */}
+          <div className="relative w-full max-w-md h-full bg-[#F5F2EB] dark:bg-[#1A1817] shadow-2xl p-8 flex flex-col justify-between z-10 border-l border-[#5C1414]/20 transition-transform duration-300">
+            <div>
+              {/* Header */}
+              <div className="flex items-center justify-between pb-6 border-b border-[#5C1414]/15">
+                <span className="font-serif text-2xl font-semibold text-[#5C1414] dark:text-[#E2C293]">
+                  ARYAN ART
+                </span>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-1 rounded-full text-[#5C1414] dark:text-[#E2C293] hover:bg-[#5C1414]/5 cursor-pointer bg-transparent border-none"
                 >
-                  {link.name}
-                </Link>
-              );
-            })}
-            <div className="pt-4 flex flex-col space-y-3">
-              <Link
-                href="/about#contact"
-                className="w-full flex items-center justify-center py-2.5 bg-amber-500 hover:bg-amber-600 text-black text-xs font-semibold uppercase tracking-luxury transition-all text-center rounded-sm shadow-md"
-              >
-                <PhoneCall className="h-3.5 w-3.5 mr-2" />
-                Contact Us
-              </Link>
-              <button
-                onClick={handleMapClick}
-                className="w-full flex items-center justify-center py-2.5 border border-white text-white hover:bg-white/10 text-xs font-semibold uppercase tracking-luxury transition-all text-center rounded-sm cursor-pointer"
-              >
-                <MapPin className="h-3.5 w-3.5 mr-2 text-amber-300" />
-                Gallery Map
-              </button>
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex flex-col space-y-6 pt-10">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={`text-xl font-medium tracking-[0.05em] uppercase hover:text-[#5C1414]/80 transition-colors ${
+                        isActive ? "text-[#5C1414] dark:text-[#E2C293] font-bold border-l-2 border-[#5C1414] pl-3" : "text-[#78716C] dark:text-stone-300"
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+              </nav>
             </div>
-          </nav>
+
+            {/* Footer / Contact Details inside menu */}
+            <div className="border-t border-[#5C1414]/15 pt-6 space-y-4">
+              {/* Mobile Search Button */}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsSearchOpen(true);
+                }}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-[#5C1414] hover:bg-[#5C1414]/90 text-[#F5F2EB] text-sm font-semibold uppercase tracking-wider rounded transition-colors cursor-pointer border-none"
+              >
+                <Search className="h-4 w-4" />
+                Search Gallery
+              </button>
+
+              <div className="text-xs text-[#78716C] dark:text-stone-400 space-y-1">
+                <p className="font-semibold text-[#5C1414] dark:text-[#E2C293]">Aryan Art Gallery</p>
+                <p>D-33 Defence Colony, New Delhi 110024</p>
+                <p>Email: info@aryanartgallery.com</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
-      {/* Keyboard-accessible Search modal popup */}
+      {/* Search Modal */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );

@@ -1,0 +1,2423 @@
+/* Landing page */
+
+position: relative;
+width: 1440px;
+height: 4811px;
+
+background: #F5F1EA;
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 1438px;
+height: 488px;
+left: 2px;
+top: 3370px;
+
+background: #D9D9D9;
+opacity: 0.5;
+
+
+/* Image - Drag in to fill. */
+
+position: absolute;
+visibility: hidden;
+width: 1440px;
+height: 720px;
+left: 0px;
+top: 0px;
+
+background: url(image);
+
+
+/* image 3 */
+
+position: absolute;
+width: 1440px;
+height: 1920px;
+left: 0px;
+top: -390px;
+
+background: url(image);
+
+
+/* dimmer */
+
+position: absolute;
+width: 1440px;
+height: 720px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.15);
+
+
+/* CATALOGUES AND PUBLICATIONS */
+
+position: absolute;
+width: 973px;
+height: 43px;
+left: calc(50% - 973px/2 - 157.5px);
+top: 3386px;
+
+font-family: 'Average';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+letter-spacing: 0.07em;
+
+color: #5C1414;
+
+
+
+/* Cards */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 32px;
+
+position: absolute;
+width: 892px;
+height: 368px;
+left: 76px;
+top: 3460px;
+
+
+
+/* Customer Quote */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 48px;
+
+width: 262px;
+height: 368px;
+
+background: #FFFFFF;
+border: 1px solid #E6E6E6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* “A terrific piece of praise” */
+
+width: 198px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Avatar */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 149px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Avatar */
+
+width: 45px;
+height: 45px;
+
+background: url(image), #D9D9D9;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 2610301 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 88px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Name */
+
+width: 45px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Description */
+
+width: 88px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Customer Quote */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 48px;
+
+width: 317px;
+height: 368px;
+
+background: #FFFFFF;
+border: 1px solid #E6E6E6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* “A fantastic bit of feedback” */
+
+width: 253px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Avatar */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 149px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Avatar */
+
+width: 45px;
+height: 45px;
+
+background: url(image), #D9D9D9;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 2610301 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 88px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Name */
+
+width: 45px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Description */
+
+width: 88px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Customer Quote */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 48px;
+
+width: 249px;
+height: 368px;
+
+background: #FFFFFF;
+border: 1px solid #E6E6E6;
+border-radius: 12px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 1;
+
+
+/* “A genuinely glowing review” */
+
+width: 185px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Avatar */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 149px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Avatar */
+
+width: 45px;
+height: 45px;
+
+background: url(frank-ching-L1hlPG8-57A-unsplash (1)), #D9D9D9;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 2610301 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 88px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Name */
+
+width: 45px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Description */
+
+width: 88px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Customer Quote */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 32px;
+gap: 48px;
+
+position: absolute;
+width: 255px;
+height: 368px;
+left: 1005px;
+top: 3460px;
+
+background: #FFFFFF;
+border: 1px solid #E6E6E6;
+border-radius: 12px;
+
+
+/* “A genuinely glowing review” */
+
+width: 191px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Avatar */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 16px;
+
+width: 149px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Avatar */
+
+width: 45px;
+height: 45px;
+
+background: url(frank-ching-L1hlPG8-57A-unsplash (1)), #D9D9D9;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Frame 2610301 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 2px;
+
+width: 88px;
+height: 50px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Name */
+
+width: 45px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Description */
+
+width: 88px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Navigation */
+
+position: absolute;
+visibility: hidden;
+height: 164px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+
+
+/* Items */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+gap: 48px;
+
+position: absolute;
+width: 390px;
+height: 52px;
+right: 80px;
+top: 56px;
+
+
+
+/* Page */
+
+width: 49px;
+height: 30px;
+
+/* Body text
+
+Text for body copy
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 150%;
+/* identical to box height, or 30px */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Page */
+
+width: 49px;
+height: 30px;
+
+/* Body text
+
+Text for body copy
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 150%;
+/* identical to box height, or 30px */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Page */
+
+width: 49px;
+height: 30px;
+
+/* Body text
+
+Text for body copy
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 150%;
+/* identical to box height, or 30px */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Button */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 14px 24px;
+gap: 8px;
+
+width: 99px;
+height: 52px;
+
+background: #000000;
+/* Button Shadow */
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 8px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Button */
+
+width: 51px;
+height: 24px;
+
+/* Small text
+
+Small text
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+/* identical to box height, or 24px */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Site name */
+
+position: absolute;
+width: 95px;
+height: 30px;
+left: 80px;
+top: 67px;
+
+/* Body text
+
+Text for body copy
+*/
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 150%;
+/* identical to box height, or 30px */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* Navigation / Footer */
+
+position: absolute;
+height: 153px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+
+background: #1B1712;
+
+
+/* Divider */
+
+position: absolute;
+width: 1280px;
+height: 0px;
+left: 80px;
+top: 1px;
+
+border: 1px solid #1B1712;
+
+
+/* ARYAN ART GALLERY */
+
+position: absolute;
+width: 436px;
+height: 61px;
+left: 520px;
+top: 1px;
+
+font-family: 'Cormorant Garamond';
+font-style: normal;
+font-weight: 500;
+font-size: 50px;
+line-height: 61px;
+/* identical to box height */
+text-align: center;
+
+color: #B08442;
+
+
+
+/* © 2026 ARYAN ART GALLERY · ALL RIGHTS RESERVED */
+
+position: absolute;
+width: 617px;
+height: 25px;
+left: 450px;
+top: 156px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 21px;
+line-height: 25px;
+letter-spacing: 0.07em;
+
+color: #E0E0E0;
+
+
+
+/* INDIAN OLD, MODERN & CONTEMPORARY ARTS */
+
+position: absolute;
+width: 542px;
+height: 25px;
+left: 467px;
+top: 57px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 21px;
+line-height: 25px;
+text-align: center;
+letter-spacing: 0.07em;
+
+color: #B08442;
+
+
+
+/* Line 1 */
+
+position: absolute;
+width: 1440px;
+height: 0px;
+left: 0px;
+top: 104px;
+
+border: 1px solid #B08442;
+
+
+/* © 2026 ARYAN ART GALLERY · ALL RIGHTS RESERVED */
+
+position: absolute;
+width: 529px;
+height: 22px;
+left: 474px;
+top: 119px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 300;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+letter-spacing: 0.07em;
+
+color: #E0E0E0;
+
+
+
+/* Hero Image */
+
+position: absolute;
+height: 711px;
+left: 0%;
+right: 0%;
+top: calc(50% - 711px/2 - 1886px);
+
+background: url(6.jpg);
+
+
+/* Hero Image */
+
+position: absolute;
+height: 711px;
+left: 0%;
+right: 0%;
+top: calc(50% - 711px/2 - 1886px);
+
+background: url(6.jpg);
+
+
+/* EXHIBITIONS */
+
+position: absolute;
+width: 624px;
+height: 43px;
+left: calc(50% - 624px/2 - 331px);
+top: 1019px;
+
+font-family: 'Average';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+letter-spacing: 0.07em;
+
+color: #5C1414;
+
+
+
+/* Frame 1321317456 */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 32px;
+
+position: absolute;
+width: 1279px;
+height: 541px;
+left: 77px;
+top: 1099px;
+
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 405px;
+height: 541px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Image */
+
+width: 405px;
+height: 405px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Copy */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 381px;
+height: 112px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 381px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to add more to the subheading. */
+
+width: 381px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 405px;
+height: 541px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Image */
+
+width: 405px;
+height: 405px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Copy */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 381px;
+height: 112px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 381px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to expand on the main point. */
+
+width: 381px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 24px;
+
+width: 405px;
+height: 541px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 1;
+
+
+/* Image */
+
+width: 405px;
+height: 405px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Copy */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 4px;
+
+width: 381px;
+height: 112px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 381px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to share more. */
+
+width: 381px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* PRESS AND MEDIA */
+
+position: absolute;
+width: 624px;
+height: 43px;
+left: calc(50% - 624px/2 - 332px);
+top: 2700px;
+
+font-family: 'Average';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+letter-spacing: 0.07em;
+
+color: #5D1414;
+
+
+
+/* Cards */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+gap: 31px;
+
+position: absolute;
+width: 1280px;
+height: 489px;
+left: 76px;
+top: 2784px;
+
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 32px;
+
+width: 624.5px;
+height: 489px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+
+/* Image */
+
+width: 624.5px;
+height: 341px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Copy */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 548.44px;
+height: 116px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 548px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to add more to the subheading. */
+
+width: 548px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Card */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 32px;
+
+width: 624.5px;
+height: 489px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 1;
+
+
+/* Image */
+
+width: 624.5px;
+height: 341px;
+
+background: url(image.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Copy */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 547.56px;
+height: 116px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 548px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to expand on the main point. */
+
+width: 548px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* ARTISTS */
+
+position: absolute;
+width: 624px;
+height: 43px;
+left: 77px;
+top: 1766px;
+
+font-family: 'Average';
+font-style: normal;
+font-weight: 400;
+font-size: 35px;
+line-height: 43px;
+/* identical to box height */
+letter-spacing: 0.07em;
+
+color: #5D1414;
+
+
+
+/* Section */
+
+position: absolute;
+width: 1440px;
+height: 626px;
+left: 0px;
+top: 4032px;
+
+background: #5D1414;
+
+
+/* VISIT THE GALLERY D-33 Defence Colony, New Delhi 110024 Walk-ins are welcome during opening hours. For private viewings, valuation or works currently in the veiwing room, we recommend an appointment. */
+
+position: absolute;
+width: 526px;
+height: 267px;
+left: calc(50% - 526px/2 - 402px);
+top: 62px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.07em;
+
+color: #FFFFFF;
+
+
+
+/* TELEPHONE 011-41551277 011-41550709 APPOINTMENTS Request a private viewing */
+
+position: absolute;
+width: 320px;
+height: 216px;
+left: calc(50% - 320px/2 + 564px);
+top: 60px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 21px;
+line-height: 25px;
+letter-spacing: 0.07em;
+
+color: #BFBFBF;
+
+
+
+/* HOURS Monday - Saturday 10pm - 5pm EMAIL aryanartgallery@gmail.com */
+
+position: absolute;
+width: 320px;
+height: 217px;
+left: calc(50% - 320px/2 + 238px);
+top: 61px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 21px;
+line-height: 25px;
+letter-spacing: 0.07em;
+
+color: #BFBFBF;
+
+
+
+/* Social Icons */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+position: absolute;
+width: 210px;
+height: 42px;
+left: 1142px;
+top: 308px;
+
+
+
+/* Buttons / Icon */
+
+width: 40px;
+height: 40px;
+
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 8px;
+top: 8px;
+
+
+
+/* Icon */
+
+position: absolute;
+width: 20px;
+height: 19.92px;
+left: 2px;
+top: 2.04px;
+
+background: #FFFFFF;
+
+
+/* Icons / Social / facebook */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.5%;
+bottom: 8.5%;
+
+background: #828282;
+
+
+/* Buttons / Icon */
+
+width: 40px;
+height: 40px;
+
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 8px;
+top: 8px;
+
+
+
+/* Icon */
+
+position: absolute;
+width: 18px;
+height: 18px;
+left: 3px;
+top: 3px;
+
+background: #FFFFFF;
+
+
+/* Icons / Social / linkedin */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 12.5%;
+right: 12.5%;
+top: 12.5%;
+bottom: 12.5%;
+
+background: #828282;
+
+
+/* Buttons / Icon */
+
+width: 40px;
+height: 40px;
+
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 8px;
+top: 8px;
+
+
+
+/* Icon */
+
+position: absolute;
+width: 20px;
+height: 14px;
+left: 2px;
+top: 5px;
+
+background: #FFFFFF;
+
+
+/* Icons / Social / youtube */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 20.83%;
+bottom: 20.83%;
+
+background: #828282;
+
+
+/* Buttons / Icon */
+
+width: 40px;
+height: 40px;
+
+border-radius: 4px;
+
+/* Inside auto layout */
+flex: none;
+order: 3;
+flex-grow: 0;
+
+
+/* Icon */
+
+position: absolute;
+width: 24px;
+height: 24px;
+left: 8px;
+top: 8px;
+
+
+
+/* Icon */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 2px;
+top: 2px;
+
+background: #FFFFFF;
+
+
+/* Icons / Social / instagram */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 8.33%;
+right: 8.33%;
+top: 8.33%;
+bottom: 8.33%;
+
+background: #828282;
+
+
+/* Rectangle 1 */
+
+position: absolute;
+width: 586px;
+height: 44px;
+left: 787px;
+top: 495px;
+
+background: #F5F1EA;
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 185px;
+height: 44px;
+left: 1188px;
+top: 495px;
+
+background: #B08442;
+
+
+/* Arrow 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 100px;
+height: 0px;
+left: 1235px;
+top: 517px;
+
+border: 2px solid #FFFFFF;
+
+
+/* Enter your email address */
+
+position: absolute;
+width: 343px;
+height: 21px;
+left: 841px;
+top: 506px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 21px;
+/* identical to box height */
+letter-spacing: 0.2em;
+
+color: #000000;
+
+
+
+/* JOIN OUR MAILING LIST */
+
+position: absolute;
+width: 265px;
+height: 21px;
+left: 787px;
+top: 463px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 21px;
+/* identical to box height */
+letter-spacing: 0.2em;
+
+color: #B08442;
+
+
+
+/* STAY UPDATED WITH EVENTS, EXHIBITIONS AND NEWS */
+
+position: absolute;
+width: 565px;
+height: 22px;
+left: 787px;
+top: 546px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+letter-spacing: 0.1em;
+
+color: #FFFFFF;
+
+
+
+/* Line 2 */
+
+position: absolute;
+width: 406px;
+height: 0px;
+left: 518px;
+top: 3956px;
+
+border: 1px solid #B08442;
+
+
+/* Line 4 */
+
+position: absolute;
+width: 50px;
+height: 0px;
+left: 518px;
+top: 3956px;
+
+border: 1px solid #B08442;
+transform: rotate(-90deg);
+
+
+/* Line 6 */
+
+position: absolute;
+width: 50px;
+height: 0px;
+left: 518px;
+top: 3956px;
+
+border: 1px solid #B08442;
+transform: rotate(-90deg);
+
+
+/* Line 7 */
+
+position: absolute;
+width: 50px;
+height: 0px;
+left: 924px;
+top: 3956px;
+
+border: 1px solid #B08442;
+transform: rotate(-90deg);
+
+
+/* Line 3 */
+
+position: absolute;
+width: 406px;
+height: 0px;
+left: 518px;
+top: 4006px;
+
+border: 1px solid #B08442;
+
+
+/* Navigation */
+
+position: absolute;
+height: 164px;
+left: 0px;
+right: 0px;
+top: 0px;
+
+background: #F5F2EB;
+
+
+/* ARYAN ART GALLERY */
+
+position: absolute;
+width: 624px;
+height: 78px;
+left: calc(50% - 624px/2 - 378px);
+top: 31px;
+
+font-family: 'Cormorant Garamond';
+font-style: normal;
+font-weight: 600;
+font-size: 64px;
+line-height: 78px;
+/* identical to box height */
+letter-spacing: -0.02em;
+
+color: #5C1414;
+
+
+
+/* INDIAN OLD, MODERN & CONTEMPORARY ARTS */
+
+position: absolute;
+width: 542px;
+height: 25px;
+left: 30px;
+top: 109px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 21px;
+line-height: 25px;
+letter-spacing: 0.07em;
+
+color: #5C1414;
+
+
+
+/* SEARCH */
+
+position: absolute;
+width: 88px;
+height: 24px;
+left: 1150px;
+top: 70px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.07em;
+
+color: #5C1414;
+
+
+
+/* MENU */
+
+position: absolute;
+width: 64px;
+height: 24px;
+left: 1306px;
+top: 70px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+letter-spacing: 0.07em;
+
+color: #5C1414;
+
+
+
+/* Frame 1321317457 */
+
+position: absolute;
+width: 1437px;
+height: 704px;
+left: 0px;
+top: 1843px;
+
+
+
+/* Rectangle 3 */
+
+position: absolute;
+width: 1437px;
+height: 704px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+opacity: 0.5;
+
+
+/* Image */
+
+position: absolute;
+width: 704px;
+height: 704px;
+left: 0px;
+top: 0px;
+
+background: url(image.png);
+border-radius: 8px 0px 0px 8px;
+
+
+/* Text */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+padding: 0px;
+gap: 48px;
+
+position: absolute;
+width: 516px;
+height: 480px;
+left: 819px;
+top: 125px;
+
+
+
+/* Text */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 516px;
+height: 116px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 515px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to expand on the main point. */
+
+width: 515px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 516px;
+height: 116px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 515px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes. */
+
+width: 515px;
+height: 72px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* Text */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+padding: 0px;
+gap: 8px;
+
+width: 516px;
+height: 152px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Subheading */
+
+width: 516px;
+height: 36px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 150%;
+/* identical to box height, or 36px */
+
+color: #000000;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* Body text for whatever you’d like to add more to the main point. It provides details, explanations, and context. */
+
+width: 516px;
+height: 108px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 150%;
+/* or 36px */
+display: flex;
+align-items: center;
+
+color: #828282;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 0;
+
+
+/* “A painting bought well is a pleasure for season. A painting kept well is an Inheritance.” */
+
+position: absolute;
+width: 1075px;
+height: 35px;
+left: 201px;
+top: 3894px;
+
+font-family: 'Cormorant Garamond';
+font-style: italic;
+font-weight: 400;
+font-size: 29px;
+line-height: 35px;
+text-align: center;
+letter-spacing: 0.07em;
+
+color: #B08442;
+
+
+
+/* ENQUIRE ABOUT A WORK */
+
+position: absolute;
+width: 341px;
+height: 25px;
+left: 549px;
+top: 3968px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 21px;
+line-height: 25px;
+text-align: center;
+letter-spacing: 0.2em;
+
+color: #5C1414;
+
