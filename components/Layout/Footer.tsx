@@ -23,36 +23,81 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full flex flex-col mt-auto font-sans text-white">
+    <footer 
+      className="w-full flex flex-col mt-auto font-sans text-white bg-[#1B1712]"
+      style={{ minHeight: "500px" }}
+    >
       <section 
-        className="w-full bg-[#1B1712] py-16 md:py-24 px-6 lg:px-8 border-b border-[#B08442]/20"
-        style={{ minHeight: "626px" }}
+        className="w-full bg-[#5D1414] py-8 md:py-12 px-6 lg:px-8 border-b border-[#B08442]/20"
+        style={{ minHeight: "347px" }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col justify-between h-full space-y-16">
+        <div className="w-full h-full flex flex-col justify-between space-y-16">
           
           {/* Main Grid Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
             
             {/* Column 1: Visit The Gallery Info */}
-            <div className="space-y-6">
-              <h3 className="font-sans font-bold text-xl uppercase tracking-[0.07em] text-white">
-                VISIT THE GALLERY
-              </h3>
-              <div 
-                className="font-sans font-medium text-white/90 space-y-3 leading-relaxed tracking-[0.07em]"
-                style={{ fontSize: "16px" }}
-              >
-                <button
-                  onClick={handleMapClick}
-                  className="text-left hover:text-[#B08442] transition-colors font-medium flex items-start gap-2"
+            <div className="space-y-6 flex flex-col justify-between h-full">
+              <div className="space-y-6">
+                <h3 className="font-sans font-bold text-xl uppercase tracking-[0.07em] text-white">
+                  VISIT THE GALLERY
+                </h3>
+                <div 
+                  className="font-sans font-medium text-white/90 space-y-3 leading-relaxed tracking-[0.07em]"
+                  style={{ fontSize: "16px" }}
                 >
-                  <MapPin className="h-5 w-5 mt-1 flex-shrink-0 text-[#B08442]" />
-                  <span>D-33 Defence Colony, New Delhi 110024</span>
-                </button>
-                <p className="pl-7">Walk-ins are welcome during opening hours.</p>
-                <p className="pl-7">
-                  For private viewings, valuation or works currently in the viewing room, we recommend an appointment.
-                </p>
+                  <button
+                    onClick={handleMapClick}
+                    className="text-left hover:text-[#B08442] transition-colors font-medium flex items-start gap-2"
+                  >
+                    <MapPin className="h-5 w-5 mt-1 flex-shrink-0 text-[#B08442]" />
+                    <span>D-33 Defence Colony, New Delhi 110024</span>
+                  </button>
+                  <p className="pl-7">Walk-ins are welcome during opening hours.</p>
+                  <p className="pl-7">
+                    For private viewings, valuation or works currently in the viewing room, we recommend an appointment.
+                  </p>
+                </div>
+              </div>
+
+              {/* Social Icons row */}
+              <div className="flex items-center space-x-5 pt-6 border-t border-white/10 mt-6 max-w-[200px]">
+                <a
+                  href="https://facebook.com/aryanartgallery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white hover:opacity-80 transition-opacity"
+                  aria-label="Facebook Link"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://instagram.com/aryanartgallery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white hover:opacity-80 transition-opacity"
+                  aria-label="Instagram Link"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://linkedin.com/company/aryanartgallery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white hover:opacity-80 transition-opacity"
+                  aria-label="LinkedIn Link"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://youtube.com/aryanartgallery"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white hover:opacity-80 transition-opacity"
+                  aria-label="YouTube Link"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
               </div>
             </div>
 
@@ -102,7 +147,7 @@ export default function Footer() {
             </div>
 
             {/* Column 3: Mailing List Subscription */}
-            <div className="space-y-6 lg:max-w-md">
+            <div className="space-y-6 lg:max-w-md lg:self-end">
               <h3 className="font-sans font-medium text-lg uppercase tracking-[0.2em] text-[#B08442]">
                 JOIN OUR MAILING LIST
               </h3>
@@ -139,70 +184,33 @@ export default function Footer() {
 
           </div>
 
-          {/* Social Icons row (placed absolutely near bottom right on desktop) */}
-          <div className="flex items-center space-x-3 pt-8 border-t border-white/10">
-            <a
-              href="https://facebook.com/aryanartgallery"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
-              aria-label="Facebook Link"
-            >
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a
-              href="https://instagram.com/aryanartgallery"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
-              aria-label="Instagram Link"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://linkedin.com/company/aryanartgallery"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
-              aria-label="LinkedIn Link"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="https://youtube.com/aryanartgallery"
-              target="_blank"
-              rel="noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded bg-stone-900/30 hover:bg-stone-900/50 text-[#828282] hover:text-white transition-all"
-              aria-label="YouTube Link"
-            >
-              <Youtube className="h-5 w-5" />
-            </a>
-          </div>
-
         </div>
       </section>
 
       {/* 2. Lower Footer Section (Dark Slate Brown) */}
       <section 
-        className="w-full bg-[#1B1712] py-8 px-6 lg:px-8 flex flex-col items-center justify-center text-center space-y-4"
+        className="w-full bg-[#1B1712] py-8 flex flex-col items-center justify-center text-center space-y-2"
         style={{ minHeight: "153px" }}
       >
-        <div className="w-full max-w-5xl flex flex-col items-center space-y-2">
+        <div className="w-full px-6 lg:px-8 flex flex-col items-center space-y-2">
           
-          <h2 className="font-serif font-medium text-[#B08442] tracking-normal leading-none" style={{ fontSize: "clamp(24px, 4vw, 50px)" }}>
-            ARYAN ART GALLERY
+          <h2 className="font-serif font-medium text-[#B08442] tracking-normal leading-none" style={{ fontSize: "clamp(24px, 4vw, 50px)", fontVariant: "small-caps" }}>
+            Aryan Art Gallery
           </h2>
           
           <p className="font-sans font-light text-[#B08442] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(12px, 2vw, 21px)" }}>
             INDIAN OLD, MODERN & CONTEMPORARY ARTS
           </p>
 
-          <div className="w-full max-w-4xl h-[1px] bg-[#B08442]/30 my-2" />
+        </div>
 
+        {/* Golden horizontal line spanning truly 100% full width */}
+        <div className="w-full h-[1px] bg-[#B08442]/30 my-2" />
+
+        <div className="w-full px-6 lg:px-8">
           <p className="font-sans font-light text-[#E0E0E0] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(10px, 1.5vw, 18px)" }}>
             &copy; 2026 ARYAN ART GALLERY &middot; ALL RIGHTS RESERVED
           </p>
-
         </div>
       </section>
     </footer>

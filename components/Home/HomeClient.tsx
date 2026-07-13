@@ -123,10 +123,14 @@ export default function HomeClient({
   return (
     <div className="w-full bg-[#F5F1EA] text-[#000000] overflow-x-hidden font-sans selection:bg-[#5C1414] selection:text-white">
       
-      {/* 1. Hero Section (711px Height) */}
+      {/* 1. Hero Section */}
       <section 
         className="relative w-full overflow-hidden bg-[#1B1712]"
-        style={{ height: "711px" }}
+        style={{ 
+          height: "calc(100vh - 104px)",
+          opacity: 1,
+          transform: "rotate(0deg)"
+        }}
       >
         {/* Background Slideshow */}
         {heroSlides.map((slide, idx) => (

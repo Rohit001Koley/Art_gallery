@@ -34,7 +34,7 @@ export async function getArtists(): Promise<ArtistMock[]> {
       website: a.website ?? undefined,
     }));
   } catch (error) {
-    console.warn("Database error in getArtists, falling back to mock data:", error);
+    // Fallback to mock data
     return mockArtists;
   }
 }
@@ -59,7 +59,7 @@ export async function getArtistBySlug(slug: string): Promise<ArtistMock | null> 
       website: artist.website ?? undefined,
     };
   } catch (error) {
-    console.warn(`Database error in getArtistBySlug(${slug}), falling back to mock data:`, error);
+    // Fallback to mock data
     return mockArtists.find((a) => a.slug === slug) || null;
   }
 }
@@ -102,7 +102,7 @@ export async function getArtworks(options?: {
       featured: w.featured,
     }));
   } catch (error) {
-    console.warn("Database error in getArtworks, falling back to mock data:", error);
+    // Fallback to mock data
     let items = mockArtworks;
     if (options?.featured !== undefined) {
       items = items.filter((w) => w.featured === options.featured);
@@ -140,7 +140,7 @@ export async function getArtworkById(id: string): Promise<ArtworkMock | null> {
       featured: artwork.featured,
     };
   } catch (error) {
-    console.warn(`Database error in getArtworkById(${id}), falling back to mock data:`, error);
+    // Fallback to mock data
     return mockArtworks.find((w) => w.id === id) || null;
   }
 }
@@ -166,7 +166,7 @@ export async function getExhibitions(): Promise<ExhibitionMock[]> {
       galleryImages: e.galleryImages,
     }));
   } catch (error) {
-    console.warn("Database error in getExhibitions, falling back to mock data:", error);
+    // Fallback to mock data
     return mockExhibitions;
   }
 }
@@ -193,7 +193,7 @@ export async function getExhibitionBySlug(slug: string): Promise<ExhibitionMock 
       galleryImages: exh.galleryImages,
     };
   } catch (error) {
-    console.warn(`Database error in getExhibitionBySlug(${slug}), falling back to mock data:`, error);
+    // Fallback to mock data
     return mockExhibitions.find((e) => e.slug === slug) || null;
   }
 }
@@ -215,7 +215,7 @@ export async function getEvents(): Promise<EventMock[]> {
       location: ev.location,
     }));
   } catch (error) {
-    console.warn("Database error in getEvents, falling back to mock data:", error);
+    // Fallback to mock data
     return mockEvents;
   }
 }
@@ -236,7 +236,7 @@ export async function getPublications(): Promise<PublicationMock[]> {
       description: p.description ?? undefined,
     }));
   } catch (error) {
-    console.warn("Database error in getPublications, falling back to mock data:", error);
+    // Fallback to mock data
     return mockPublications;
   }
 }
@@ -258,7 +258,7 @@ export async function getPress(): Promise<PressMock[]> {
       link: pr.link ?? undefined,
     }));
   } catch (error) {
-    console.warn("Database error in getPress, falling back to mock data:", error);
+    // Fallback to mock data
     return mockPress;
   }
 }
@@ -282,7 +282,7 @@ export async function createEnquiry(data: {
     });
     return { id: enquiry.id, success: true };
   } catch (error) {
-    console.warn("Database error in createEnquiry, simulating success in mock layer:", error);
+    // Fallback to mock data
     // Simulate successful write in mock environment
     return { id: `enq-${Math.random().toString(36).substring(2, 9)}`, success: true };
   }

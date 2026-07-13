@@ -36,9 +36,9 @@ export default function Navbar() {
     <>
       <header
         className="w-full bg-[#F5F2EB] dark:bg-[#1A1817] border-b border-[#5C1414]/10 transition-colors duration-300 relative z-40"
-        style={{ height: "164px" }}
+        style={{ height: "104px" }}
       >
-        <div className="max-w-7xl mx-auto h-full px-6 lg:px-8 flex items-center justify-between relative">
+        <div className="w-full h-full px-6 lg:px-8 flex items-center justify-between relative">
           
           {/* Left Side: Logo & Subtitle */}
           <div className="flex flex-col justify-center h-full py-4 select-none">
@@ -47,10 +47,11 @@ export default function Navbar() {
                 className="font-serif font-semibold text-[#5C1414] dark:text-[#E2C293] leading-none transition-all group-hover:opacity-90"
                 style={{
                   fontSize: "clamp(28px, 4vw, 64px)",
-                  letterSpacing: "-0.02em"
+                  letterSpacing: "-0.02em",
+                  fontVariant: "small-caps"
                 }}
               >
-                ARYAN ART GALLERY
+                Aryan Art Gallery
               </h1>
             </Link>
             <p 
@@ -82,22 +83,30 @@ export default function Navbar() {
               </button>
             )}
 
-            {/* SEARCH Text trigger */}
+            {/* SEARCH trigger (Small Search Bar on desktop, Icon on mobile) */}
+            <div
+              onClick={() => setIsSearchOpen(true)}
+              className="hidden md:flex items-center gap-2 bg-[#5C1414]/5 dark:bg-[#E2C293]/5 border border-[#5C1414]/10 dark:border-[#E2C293]/10 hover:border-[#5C1414]/20 dark:hover:border-[#E2C293]/20 rounded-full px-3 py-1.5 cursor-pointer hover:bg-[#5C1414]/10 dark:hover:bg-[#E2C293]/10 transition-all text-xs text-[#5C1414]/70 dark:text-[#E2C293]/70 font-sans tracking-[0.05em] uppercase w-44 select-none"
+            >
+              <Search className="h-3.5 w-3.5 text-[#5C1414] dark:text-[#E2C293] stroke-[1.5]" />
+              <span className="opacity-30">Search...</span>
+            </div>
+
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hidden md:flex items-center font-sans text-xl font-normal tracking-[0.07em] text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer uppercase gap-2 bg-transparent border-none"
+              className="flex md:hidden items-center text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
+              aria-label="Search"
             >
               <Search className="h-5 w-5 stroke-[1.5]" />
-              SEARCH
             </button>
 
-            {/* MENU Text trigger */}
+            {/* MENU trigger (Icon only) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center font-sans text-xl font-normal tracking-[0.07em] text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer uppercase gap-2 bg-transparent border-none"
+              className="flex items-center text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
+              aria-label="Menu"
             >
               <Menu className="h-5 w-5 stroke-[1.5]" />
-              MENU
             </button>
           </div>
         </div>
