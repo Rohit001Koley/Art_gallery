@@ -25,7 +25,6 @@ export default function Footer() {
   return (
     <footer 
       className="w-full flex flex-col mt-auto font-sans text-white bg-[#1B1712]"
-      style={{ minHeight: "500px" }}
     >
       <section 
         className="w-full bg-[#5D1414] py-8 md:py-12 px-6 lg:px-8 border-b border-[#B08442]/20"
@@ -189,7 +188,7 @@ export default function Footer() {
 
       {/* 2. Lower Footer Section */}
       <section 
-        className="w-full bg-[#1B1712] border-t border-[#5C1414]/10 transition-colors duration-300 relative z-40 py-4 flex flex-col items-center"
+        className="w-full bg-[#1B1712] border-t border-[#5C1414]/10 transition-colors duration-300 relative z-40 pt-0 pb-4 flex flex-col items-center"
       >
         {/* Top: Centered Logo & Subtitle */}
         <div className="w-full px-6 lg:px-8 flex flex-col items-center select-none text-center mb-2">
