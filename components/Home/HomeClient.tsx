@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, FileText, ExternalLink, Calendar, MapPin, Check } from "lucide-react";
+import { ArrowRight, FileText, ExternalLink, Calendar, MapPin, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { ArtistMock, ArtworkMock, ExhibitionMock, EventMock, PublicationMock, mockPress } from "@/lib/mockData";
 import { formatDate } from "@/lib/utils";
 import EnquiryModal from "@/components/EnquiryModal";
@@ -112,12 +112,26 @@ export default function HomeClient({
     setIsEnquiryOpen(true);
   };
 
-  const currentArtist = artists[0] || {
-    name: "Alexandre Dubois",
-    nationality: "French",
-    style: "Neo-Classical Surrealism",
-    bio: "Alexandre Dubois is a French neo-classical painter who merges traditional 18th-century portraiture techniques with contemporary surrealist elements.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
+  const sliderRef = useRef<HTMLDivElement>(null);
+
+  const handlePrevArtist = () => {
+    if (sliderRef.current) {
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      sliderRef.current.scrollBy({
+        left: -(cardWidth + 32), // card width + gap
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleNextArtist = () => {
+    if (sliderRef.current) {
+      const cardWidth = sliderRef.current.firstElementChild?.getBoundingClientRect().width || 400;
+      sliderRef.current.scrollBy({
+        left: cardWidth + 32, // card width + gap
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -221,71 +235,83 @@ export default function HomeClient({
       <section className="w-full py-20 px-6 lg:px-8 bg-[#F5F2EB]/50">
         <div className="max-w-7xl mx-auto flex flex-col space-y-12">
           
-          <div className="border-b border-[#5C1414]/15 pb-4">
+          <div className="border-b border-[#5C1414]/15 pb-4 flex items-center justify-between">
             <h2 className="font-average font-normal text-[#5D1414] tracking-[0.07em] uppercase" style={{ fontSize: "35px" }}>
               ARTISTS
             </h2>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={handlePrevArtist}
+                className="w-10 h-10 rounded-full border border-[#5C1414]/25 flex items-center justify-center text-[#5C1414] hover:bg-[#5C1414] hover:text-white transition-all cursor-pointer"
+                aria-label="Previous artist"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={handleNextArtist}
+                className="w-10 h-10 rounded-full border border-[#5C1414]/25 flex items-center justify-center text-[#5C1414] hover:bg-[#5C1414] hover:text-white transition-all cursor-pointer"
+                aria-label="Next artist"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
 
-          {/* Split Panel Layout (top 1843px, height 704px) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-stretch bg-white border border-stone-200/60 rounded shadow-md overflow-hidden min-h-[704px]">
-            
-            {/* Left Image (704x704px on large viewports) */}
-            <div className="lg:col-span-6 relative bg-stone-100 min-h-[400px] lg:min-h-full">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={currentArtist.image}
-                alt={currentArtist.name}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Right text details (width 516px space) */}
-            <div className="lg:col-span-6 flex flex-col justify-center px-8 py-12 md:px-12 lg:px-16 space-y-12">
-              
-              {/* Block 1 */}
-              <div className="flex flex-col space-y-2">
-                <h3 className="font-sans font-medium text-black" style={{ fontSize: "24px" }}>
-                  {currentArtist.name}
-                </h3>
-                <p className="font-sans font-normal text-[#828282] leading-relaxed" style={{ fontSize: "16px" }}>
-                  Representing premium international mastery. Nationality: {currentArtist.nationality}. Style focus: {currentArtist.style}.
-                </p>
-              </div>
-
-              {/* Block 2 */}
-              <div className="flex flex-col space-y-2">
-                <h3 className="font-sans font-medium text-black" style={{ fontSize: "24px" }}>
-                  Curator&apos;s Review
-                </h3>
-                <p className="font-sans font-normal text-[#828282] leading-relaxed" style={{ fontSize: "16px" }}>
-                  {currentArtist.bio}
-                </p>
-              </div>
-
-              {/* Block 3 */}
-              <div className="flex flex-col space-y-2">
-                <h3 className="font-sans font-medium text-black" style={{ fontSize: "24px" }}>
-                  Featured Galleries & Exhibitions
-                </h3>
-                <p className="font-sans font-normal text-[#828282] leading-relaxed" style={{ fontSize: "16px" }}>
-                  Our curated roster of artists challenge visual limits and redefine spatial depth, offering collectors a sanctuary for quiet artistic reflection and long-term inheritance.
-                </p>
-              </div>
-
-              <div className="pt-4">
-                <Link
-                  href={`/artists/${currentArtist.slug}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-[#5C1414] hover:text-[#802222] transition-colors border-b border-[#5C1414]/30 pb-1"
+          <div className="relative w-full">
+            <div 
+              ref={sliderRef}
+              className="flex gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4"
+            >
+              {artists.map((artist) => (
+                <div 
+                  key={artist.id}
+                  className="flex-none w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-21.3px)] snap-start group bg-white border border-[#E6E6E6] hover:border-[#5C1414]/20 hover:shadow-lg transition-all duration-500 rounded-sm overflow-hidden flex flex-col h-[540px]"
                 >
-                  <span>Explore Artist Profile</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+                  {/* Photo Container */}
+                  <div className="relative h-[280px] w-full overflow-hidden bg-stone-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={artist.image}
+                      alt={artist.name}
+                      className="w-full h-full object-cover grayscale contrast-[1.15] brightness-[0.95] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1B1712]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
 
+                  {/* Copy content */}
+                  <div className="p-6 flex flex-col flex-1 justify-between">
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-xs font-semibold tracking-[0.1em] uppercase text-[#B08442]">
+                          {artist.nationality}
+                        </span>
+                        <h3 className="font-sans font-medium text-black group-hover:text-[#5C1414] transition-colors mt-0.5" style={{ fontSize: "22px" }}>
+                          {artist.name}
+                        </h3>
+                      </div>
+                      <div className="text-[#828282] font-semibold text-xs uppercase tracking-wide">
+                        Style Focus: {artist.style}
+                      </div>
+                      <p className="font-sans font-normal text-[#828282] leading-relaxed line-clamp-3 text-sm">
+                        {artist.bio}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-stone-100 mt-auto flex items-center justify-between">
+                      <Link
+                        href={`/artists/${artist.slug}`}
+                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#5C1414] hover:text-[#802222] transition-colors group/btn"
+                      >
+                        <span>Explore Artist Profile</span>
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-
           </div>
+
         </div>
       </section>
 

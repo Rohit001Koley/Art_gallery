@@ -39,7 +39,7 @@ export default async function ArtistsPage() {
               <img
                 src={artist.image}
                 alt={artist.name}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover grayscale contrast-[1.15] brightness-[0.95] transition-all duration-700 ease-out group-hover:scale-105 group-hover:brightness-100"
               />
             </Link>
 

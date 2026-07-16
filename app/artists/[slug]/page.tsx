@@ -42,12 +42,12 @@ export default async function ArtistDetailPage({ params }: PageProps) {
       {/* Artist Profile Header Card */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16 items-start">
         {/* Photo block */}
-        <div className="aspect-square bg-muted border border-border overflow-hidden rounded-sm lg:col-span-1 shadow-sm">
+        <div className="aspect-square bg-muted border border-border overflow-hidden rounded-sm lg:col-span-1 shadow-sm group">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={artist.image}
             alt={artist.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover grayscale contrast-[1.15] brightness-[0.95] transition-all duration-500 group-hover:brightness-100"
           />
         </div>
 
