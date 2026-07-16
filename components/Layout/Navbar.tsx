@@ -3,20 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Search, Menu, X } from "lucide-react";
 import SearchModal from "../SearchModal";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -28,9 +21,7 @@ export default function Navbar() {
     { name: "About Us", href: "/about" },
   ];
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
+
 
   return (
     <>
@@ -67,22 +58,6 @@ export default function Navbar() {
 
           {/* Right Side: Actions & Triggers */}
           <div className="flex items-center space-x-6 md:space-x-12">
-            
-            {/* Theme Toggle (subtle, elegant) */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="text-[#5C1414] dark:text-[#E2C293] hover:opacity-80 transition-opacity cursor-pointer p-1"
-                aria-label="Toggle theme"
-              >
-                {resolvedTheme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
-
             {/* SEARCH trigger (Small Search Bar on desktop, Icon on mobile) */}
             <div
               onClick={() => setIsSearchOpen(true)}
@@ -112,69 +87,65 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Drawer Overlay Menu */}
+      {/* Floating Compact Menu Panel */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end font-sans">
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-50 flex justify-end font-sans pointer-events-none">
+          {/* Transparent Backdrop to close on click outside */}
           <div
-            className="fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300"
+            className="fixed inset-0 pointer-events-auto bg-black/5"
             onClick={() => setIsMobileMenuOpen(false)}
           />
 
-          {/* Drawer panel */}
-          <div className="relative w-full max-w-md h-full bg-[#F5F2EB] dark:bg-[#1A1817] shadow-2xl p-8 flex flex-col justify-between z-10 border-l border-[#5C1414]/20 transition-transform duration-300">
-            <div>
-              {/* Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-[#5C1414]/15">
-                <span className="font-serif text-2xl font-semibold text-[#5C1414] dark:text-[#E2C293]">
-                  ARYAN ART
-                </span>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1 rounded-full text-[#5C1414] dark:text-[#E2C293] hover:bg-[#5C1414]/5 cursor-pointer bg-transparent border-none"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-
-              {/* Navigation Links */}
-              <nav className="flex flex-col space-y-6 pt-10">
-                {navLinks.map((link) => {
-                  const isActive = pathname === link.href;
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className={`text-xl font-medium tracking-[0.05em] uppercase hover:text-[#5C1414]/80 transition-colors ${
-                        isActive ? "text-[#5C1414] dark:text-[#E2C293] font-bold border-l-2 border-[#5C1414] pl-3" : "text-[#78716C] dark:text-stone-300"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
-              </nav>
+          {/* Compressed menu container */}
+          <div className="relative pointer-events-auto w-64 h-auto max-h-[calc(100vh-140px)] bg-[#F5F2EB] dark:bg-[#1A1817] shadow-2xl p-5 z-10 border border-[#5C1414]/15 rounded mt-[108px] mr-6 md:mr-8 flex flex-col space-y-4 overflow-y-auto">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-[#5C1414]/15">
+              <span className="font-serif text-sm font-semibold text-[#5C1414] dark:text-[#E2C293] tracking-wide">
+                Menu
+              </span>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-1 rounded-full text-[#5C1414] dark:text-[#E2C293] hover:bg-[#5C1414]/5 cursor-pointer bg-transparent border-none"
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
 
-            {/* Footer / Contact Details inside menu */}
-            <div className="border-t border-[#5C1414]/15 pt-6 space-y-4">
-              {/* Mobile Search Button */}
+            {/* Navigation Links */}
+            <nav className="flex flex-col space-y-3">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-xs font-semibold tracking-wider uppercase hover:text-[#5C1414] dark:hover:text-[#E2C293] transition-colors ${
+                      isActive ? "text-[#5C1414] dark:text-[#E2C293] font-bold border-l-2 border-[#5C1414] pl-2" : "text-[#78716C] dark:text-stone-300"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Footer / Search Button in menu */}
+            <div className="border-t border-[#5C1414]/15 pt-4 flex flex-col space-y-3">
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   setIsSearchOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2 py-3 bg-[#5C1414] hover:bg-[#5C1414]/90 text-[#F5F2EB] text-sm font-semibold uppercase tracking-wider rounded transition-colors cursor-pointer border-none"
+                className="w-full flex items-center justify-center gap-1.5 py-2 bg-[#5C1414] hover:bg-[#5C1414]/90 text-[#F5F2EB] text-xs font-semibold uppercase tracking-wider rounded transition-colors cursor-pointer border-none"
               >
-                <Search className="h-4 w-4" />
+                <Search className="h-3.5 w-3.5" />
                 Search Gallery
               </button>
 
-              <div className="text-xs text-[#78716C] dark:text-stone-400 space-y-1">
+              <div className="text-[10px] text-[#78716C] dark:text-stone-400 leading-normal">
                 <p className="font-semibold text-[#5C1414] dark:text-[#E2C293]">Aryan Art Gallery</p>
-                <p>D-33 Defence Colony, New Delhi 110024</p>
-                <p>Email: info@aryanartgallery.com</p>
+                <p>New Delhi 110024</p>
               </div>
             </div>
           </div>

@@ -187,28 +187,39 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* 2. Lower Footer Section (Dark Slate Brown) */}
+      {/* 2. Lower Footer Section */}
       <section 
-        className="w-full bg-[#1B1712] py-8 flex flex-col items-center justify-center text-center space-y-2"
-        style={{ minHeight: "153px" }}
+        className="w-full bg-[#1B1712] border-t border-[#5C1414]/10 transition-colors duration-300 relative z-40 py-4 flex flex-col items-center"
       >
-        <div className="w-full px-6 lg:px-8 flex flex-col items-center space-y-2">
-          
-          <h2 className="font-serif font-medium text-[#B08442] tracking-normal leading-none" style={{ fontSize: "clamp(24px, 4vw, 50px)", fontVariant: "small-caps" }}>
+        {/* Top: Centered Logo & Subtitle */}
+        <div className="w-full px-6 lg:px-8 flex flex-col items-center select-none text-center mb-2">
+          <h2 
+            className="font-serif font-semibold text-[#E2C293] leading-none"
+            style={{
+              fontSize: "clamp(22px, 3vw, 42px)",
+              letterSpacing: "-0.01em",
+              fontVariant: "small-caps"
+            }}
+          >
             Aryan Art Gallery
           </h2>
-          
-          <p className="font-sans font-light text-[#B08442] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(12px, 2vw, 21px)" }}>
+          <p 
+            className="font-sans font-medium text-[#E2C293]/80 uppercase mt-1 tracking-[0.07em]"
+            style={{
+              fontSize: "clamp(9px, 0.9vw, 14px)",
+              lineHeight: "1.2"
+            }}
+          >
             INDIAN OLD, MODERN & CONTEMPORARY ARTS
           </p>
-
         </div>
 
         {/* Golden horizontal line spanning truly 100% full width */}
         <div className="w-full h-[1px] bg-[#B08442]/30 my-2" />
 
-        <div className="w-full px-6 lg:px-8">
-          <p className="font-sans font-light text-[#E0E0E0] uppercase tracking-[0.07em] leading-normal" style={{ fontSize: "clamp(10px, 1.5vw, 18px)" }}>
+        {/* Bottom: Centered Copyright */}
+        <div className="w-full px-6 lg:px-8 text-center mt-1">
+          <p className="font-sans font-normal text-[#E0E0E0] uppercase tracking-[0.07em] text-xs">
             &copy; 2026 ARYAN ART GALLERY &middot; ALL RIGHTS RESERVED
           </p>
         </div>
