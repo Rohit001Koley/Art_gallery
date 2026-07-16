@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <>
       <header
-        className="w-full bg-[#F5F2EB] dark:bg-[#1A1817] border-b border-[#5C1414]/10 transition-colors duration-300 relative z-40"
+        className="w-full bg-[#F5F2EB] border-b border-[#5C1414]/10 relative z-40"
         style={{ height: "104px" }}
       >
         <div className="w-full h-full px-6 lg:px-8 flex items-center justify-between relative">
@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className="flex flex-col justify-center h-full py-4 select-none">
             <Link href="/" className="group block">
               <h1 
-                className="font-serif font-semibold text-[#5C1414] dark:text-[#E2C293] leading-none transition-all group-hover:opacity-90"
+                className="font-serif font-semibold text-[#5C1414] leading-none transition-all group-hover:opacity-90"
                 style={{
                   fontSize: "clamp(28px, 4vw, 64px)",
                   letterSpacing: "-0.02em",
@@ -46,7 +46,7 @@ export default function Navbar() {
               </h1>
             </Link>
             <p 
-              className="font-sans font-medium text-[#5C1414]/90 dark:text-[#E2C293]/80 uppercase mt-2 tracking-[0.07em]"
+              className="font-sans font-medium text-[#5C1414]/90 uppercase mt-2 tracking-[0.07em]"
               style={{
                 fontSize: "clamp(10px, 1.2vw, 21px)",
                 lineHeight: "1.2"
@@ -61,15 +61,15 @@ export default function Navbar() {
             {/* SEARCH trigger (Small Search Bar on desktop, Icon on mobile) */}
             <div
               onClick={() => setIsSearchOpen(true)}
-              className="hidden md:flex items-center gap-2 bg-[#5C1414]/5 dark:bg-[#E2C293]/5 border border-[#5C1414]/10 dark:border-[#E2C293]/10 hover:border-[#5C1414]/20 dark:hover:border-[#E2C293]/20 rounded-full px-3 py-1.5 cursor-pointer hover:bg-[#5C1414]/10 dark:hover:bg-[#E2C293]/10 transition-all text-xs text-[#5C1414]/70 dark:text-[#E2C293]/70 font-sans tracking-[0.05em] uppercase w-44 select-none"
+              className="hidden md:flex items-center gap-2 bg-[#5C1414]/5 border border-[#5C1414]/10 hover:border-[#5C1414]/20 rounded-full px-3 py-1.5 cursor-pointer hover:bg-[#5C1414]/10 transition-all text-xs text-[#5C1414]/70 font-sans tracking-[0.05em] uppercase w-44 select-none"
             >
-              <Search className="h-3.5 w-3.5 text-[#5C1414] dark:text-[#E2C293] stroke-[1.5]" />
+              <Search className="h-3.5 w-3.5 text-[#5C1414] stroke-[1.5]" />
               <span className="opacity-30">Search...</span>
             </div>
 
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex md:hidden items-center text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
+              className="flex md:hidden items-center text-[#5C1414] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
               aria-label="Search"
             >
               <Search className="h-5 w-5 stroke-[1.5]" />
@@ -78,7 +78,7 @@ export default function Navbar() {
             {/* MENU trigger (Icon only) */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex items-center text-[#5C1414] dark:text-[#E2C293] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
+              className="flex items-center text-[#5C1414] hover:opacity-85 transition-opacity cursor-pointer bg-transparent border-none p-1"
               aria-label="Menu"
             >
               <Menu className="h-5 w-5 stroke-[1.5]" />
@@ -97,15 +97,15 @@ export default function Navbar() {
           />
 
           {/* Compressed menu container */}
-          <div className="relative pointer-events-auto w-64 h-auto max-h-[calc(100vh-140px)] bg-[#F5F2EB] dark:bg-[#1A1817] shadow-2xl p-5 z-10 border border-[#5C1414]/15 rounded mt-[108px] mr-6 md:mr-8 flex flex-col space-y-4 overflow-y-auto">
+          <div className="relative pointer-events-auto w-64 h-auto max-h-[calc(100vh-140px)] bg-[#F5F2EB] shadow-2xl p-5 z-10 border border-[#5C1414]/15 rounded mt-[108px] mr-6 md:mr-8 flex flex-col space-y-4 overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between pb-3 border-b border-[#5C1414]/15">
-              <span className="font-serif text-sm font-semibold text-[#5C1414] dark:text-[#E2C293] tracking-wide">
+              <span className="font-serif text-sm font-semibold text-[#5C1414] tracking-wide">
                 Menu
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-1 rounded-full text-[#5C1414] dark:text-[#E2C293] hover:bg-[#5C1414]/5 cursor-pointer bg-transparent border-none"
+                className="p-1 rounded-full text-[#5C1414] hover:bg-[#5C1414]/5 cursor-pointer bg-transparent border-none"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -120,8 +120,8 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-xs font-semibold tracking-wider uppercase hover:text-[#5C1414] dark:hover:text-[#E2C293] transition-colors ${
-                      isActive ? "text-[#5C1414] dark:text-[#E2C293] font-bold border-l-2 border-[#5C1414] pl-2" : "text-[#78716C] dark:text-stone-300"
+                    className={`text-xs font-semibold tracking-wider uppercase hover:text-[#5C1414] transition-colors ${
+                      isActive ? "text-[#5C1414] font-bold border-l-2 border-[#5C1414] pl-2" : "text-[#78716C]"
                     }`}
                   >
                     {link.name}
@@ -143,8 +143,8 @@ export default function Navbar() {
                 Search Gallery
               </button>
 
-              <div className="text-[10px] text-[#78716C] dark:text-stone-400 leading-normal">
-                <p className="font-semibold text-[#5C1414] dark:text-[#E2C293]">Aryan Art Gallery</p>
+              <div className="text-[10px] text-[#78716C] leading-normal">
+                <p className="font-semibold text-[#5C1414]">Aryan Art Gallery</p>
                 <p>New Delhi 110024</p>
               </div>
             </div>

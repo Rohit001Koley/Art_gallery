@@ -16,26 +16,6 @@ interface HomeClientProps {
   publications: PublicationMock[];
 }
 
-const heroSlides = [
-  {
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1600",
-    title: "Portrait of a Golden Shadow",
-    artist: "Alexandre Dubois",
-    year: "2025",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1600",
-    title: "The Silent Canopy",
-    artist: "Elena Rostova",
-    year: "2024",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1579783928621-7a13d66a62d1?q=80&w=1600",
-    title: "Echoes of the River",
-    artist: "Sofia Chen",
-    year: "2025",
-  },
-];
 
 const testimonials = [
   {
@@ -75,17 +55,11 @@ export default function HomeClient({
   events,
   publications,
 }: HomeClientProps) {
-  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
   const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState<ArtworkMock | null>(null);
 
-  // Auto-scroll hero slideshow every 4 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentHeroIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, []);
+
 
   // Trigger inquiry modal helper
   const handleOpenGeneralEnquiry = () => {
@@ -138,48 +112,15 @@ export default function HomeClient({
     <div className="w-full bg-[#F5F1EA] text-[#000000] overflow-x-hidden font-sans selection:bg-[#5C1414] selection:text-white">
       
       {/* 1. Hero Section */}
-      <section 
-        className="relative w-full overflow-hidden bg-[#1B1712]"
-        style={{ 
-          height: "calc(100vh - 104px)",
-          opacity: 1,
-          transform: "rotate(0deg)"
-        }}
-      >
-        {/* Background Slideshow */}
-        {heroSlides.map((slide, idx) => (
-          <div
-            key={idx}
-            className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: idx === currentHeroIndex ? 1 : 0 }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover select-none pointer-events-none transform scale-102 transition-transform duration-4000 ease-out"
-              style={{
-                transform: idx === currentHeroIndex ? "scale(1)" : "scale(1.05)",
-              }}
-            />
-          </div>
-        ))}
-        
-        {/* Dimmer Overlay (rgba(0, 0, 0, 0.15)) */}
-        <div className="absolute inset-0 bg-black/15 pointer-events-none z-10" />
-
-        {/* Text Details overlay */}
-        <div className="absolute bottom-12 left-6 md:left-16 z-20 text-white max-w-xl p-6 bg-black/35 backdrop-blur-xs border border-white/10 rounded-sm">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#B08442]">
-            Featured Acquisition
-          </span>
-          <h2 className="text-2xl md:text-4xl font-serif font-semibold mt-1">
-            {heroSlides[currentHeroIndex].title}
-          </h2>
-          <p className="text-sm text-stone-300 mt-1">
-            by {heroSlides[currentHeroIndex].artist} ({heroSlides[currentHeroIndex].year})
-          </p>
-        </div>
+      <section className="relative w-full aspect-[16/9] md:max-h-[650px] overflow-hidden bg-[#1B1712]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1552084117-56a987666449?q=80&w=1600"
+          alt="Aryan Art Gallery Interior"
+          className="w-full h-full object-cover select-none pointer-events-none"
+        />
+        {/* Dimmer Overlay (very subtle) */}
+        <div className="absolute inset-0 bg-black/5 pointer-events-none z-10" />
       </section>
 
       {/* 2. Exhibitions Section */}
