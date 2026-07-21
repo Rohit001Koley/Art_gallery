@@ -1,0 +1,586 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { Facebook, Linkedin, Youtube, Instagram, Search, Menu as MenuIcon, ChevronLeft, ChevronRight } from "lucide-react";
+
+const galleryImage =
+  "https://images.pexels.com/photos/35336001/pexels-photo-35336001.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const portraitImage =
+  "https://images.pexels.com/photos/6669746/pexels-photo-6669746.jpeg?auto=compress&cs=tinysrgb&w=900";
+const exhibitionImage =
+  "https://images.pexels.com/photos/11000394/pexels-photo-11000394.jpeg?auto=compress&cs=tinysrgb&w=1200";
+
+const sampleArtists = [
+  { name: "Riyas Komu", category: "artists" },
+  { name: "Jitish Kallat", category: "artists" },
+  { name: "Atul Dodiya", category: "artists" },
+  { name: "Vivan Sundaram", category: "artists" },
+  { name: "M.F. Husain", category: "artists" },
+  { name: "S.H. Raza", category: "artists" },
+  { name: "F.N. Souza", category: "artists" },
+  { name: "Tyeb Mehta", category: "artists" },
+  { name: "Jamini Roy", category: "artists" },
+];
+
+const samplePaintings = [
+  { title: "Untitled (Horse & Figure)", artist: "M.F. Husain", category: "paintings" },
+  { title: "Bindu Series (Saurashtra)", artist: "S.H. Raza", category: "paintings" },
+  { title: "Head of a Man", artist: "F.N. Souza", category: "paintings" },
+  { title: "Diagonal Series", artist: "Tyeb Mehta", category: "paintings" },
+  { title: "Three Pujarins", artist: "Jamini Roy", category: "paintings" },
+  { title: "Metamorphosis", artist: "Riyas Komu", category: "paintings" },
+  { title: "Autobiography", artist: "Atul Dodiya", category: "paintings" },
+];
+
+const artistProfiles = [
+  {
+    name: "Riyas Komu",
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Jitish Kallat",
+    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Atul Dodiya",
+    image: "https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Vivan Sundaram",
+    image: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "M.F. Husain",
+    image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "S.H. Raza",
+    image: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "F.N. Souza",
+    image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Tyeb Mehta",
+    image: "https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Jamini Roy",
+    image: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    name: "Amrita Sher-Gil",
+    image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+];
+
+const exhibitionProfiles = [
+  {
+    title: "A Sense of Place",
+    subtitle: "Modern Masters of India",
+    date: "12 Oct – 15 Nov 2026",
+    image: "https://images.pexels.com/photos/11000394/pexels-photo-11000394.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Dreams in Transit",
+    subtitle: "Contemporary Explorations",
+    date: "01 Dec – 20 Jan 2027",
+    image: "https://images.pexels.com/photos/1839919/pexels-photo-1839919.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Lines of Flight",
+    subtitle: "Sculpture & Form",
+    date: "10 Feb – 28 Mar 2027",
+    image: "https://images.pexels.com/photos/1570779/pexels-photo-1570779.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Echoes of Silence",
+    subtitle: "Retrospective in Oil & Canvas",
+    date: "05 Apr – 18 May 2027",
+    image: "https://images.pexels.com/photos/164455/pexels-photo-164455.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "Visions of Geometry",
+    subtitle: "Abstract Traditions",
+    date: "01 Jun – 15 Jul 2027",
+    image: "https://images.pexels.com/photos/288100/pexels-photo-288100.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+  {
+    title: "The Golden Horizon",
+    subtitle: "Indian Heritage Art",
+    date: "01 Aug – 30 Sep 2027",
+    image: "https://images.pexels.com/photos/1269968/pexels-photo-1269968.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  },
+];
+
+const artists = artistProfiles.map((a) => a.name);
+
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchCategory, setSearchCategory] = useState<"all" | "artists" | "paintings">("all");
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  const artistScrollRef = useRef<HTMLDivElement>(null);
+  const exhibitionScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollArtistLeft = () => {
+    if (artistScrollRef.current) {
+      artistScrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
+    }
+  };
+
+  const scrollArtistRight = () => {
+    if (artistScrollRef.current) {
+      artistScrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
+    }
+  };
+
+  const scrollExhibitionLeft = () => {
+    if (exhibitionScrollRef.current) {
+      exhibitionScrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+    }
+  };
+
+  const scrollExhibitionRight = () => {
+    if (exhibitionScrollRef.current) {
+      exhibitionScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+    }
+  };
+
+  const filteredArtists = sampleArtists.filter((a) =>
+    a.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  const filteredPaintings = samplePaintings.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.artist.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <main className="overflow-hidden bg-white text-gallery-ink">
+      <header className="flex h-[72px] items-center justify-between px-2 md:h-[92px] md:px-4 lg:px-6">
+        <a href="#top" className="leading-none" aria-label="Aryan Art Gallery home">
+          <span className="inline-flex items-baseline font-display text-[29px] tracking-[-0.045em] text-gallery-wine md:text-[35px]">
+            <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
+            <span className="mx-[0.25em]"></span>
+            <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
+            <span className="mx-[0.25em]"></span>
+            <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
+          </span>
+          <span className="mt-1 block font-sans text-[8px] font-medium tracking-[0.15em] text-gallery-wine md:text-[10px]">
+            INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
+          </span>
+        </a>
+
+        <div className="flex items-center gap-3 text-gallery-wine md:gap-5">
+          <div className="relative">
+            <div className="flex items-center rounded-full border border-gallery-wine/30 bg-gallery-stone/50 py-1.5 pl-3 pr-3 transition focus-within:border-gallery-wine focus-within:bg-white">
+              <Search className="h-3.5 w-3.5 shrink-0 text-gallery-wine/70" />
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setTimeout(() => setSearchFocused(false), 250)}
+                className="h-6 w-28 bg-transparent pl-2 pr-1 font-sans text-xs text-gallery-ink placeholder:text-gallery-wine/60 focus:outline-none md:w-44"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery("")}
+                  className="px-1 text-xs text-gallery-wine/50 hover:text-gallery-wine"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            {/* Category Selection & Search Panel on Click/Focus */}
+            {searchFocused && (
+              <div
+                onMouseDown={(e) => e.preventDefault()}
+                className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md"
+              >
+                {/* Category Selection Tabs */}
+                <div className="mb-3 flex items-center gap-1 rounded-lg bg-gallery-stone/60 p-1 font-sans text-[11px] font-medium uppercase tracking-wider text-gallery-wine">
+                  <button
+                    type="button"
+                    onClick={() => setSearchCategory("all")}
+                    className={`flex-1 rounded py-1 transition ${searchCategory === "all"
+                      ? "bg-white font-bold text-gallery-wine shadow-sm"
+                      : "hover:text-gallery-ink"
+                      }`}
+                  >
+                    All
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSearchCategory("artists")}
+                    className={`flex-1 rounded py-1 transition ${searchCategory === "artists"
+                      ? "bg-white font-bold text-gallery-wine shadow-sm"
+                      : "hover:text-gallery-ink"
+                      }`}
+                  >
+                    Artists
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSearchCategory("paintings")}
+                    className={`flex-1 rounded py-1 transition ${searchCategory === "paintings"
+                      ? "bg-white font-bold text-gallery-wine shadow-sm"
+                      : "hover:text-gallery-ink"
+                      }`}
+                  >
+                    Paintings
+                  </button>
+                </div>
+
+                {/* Content / Results */}
+                {searchQuery.trim() === "" ? (
+                  <div className="py-2 font-sans text-xs text-gallery-wine/70">
+                    <p className="mb-2 font-sans text-[10px] font-bold uppercase tracking-wider text-gallery-wine">
+                      Categories
+                    </p>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setSearchCategory("artists")}
+                        className="rounded-md bg-gallery-stone/60 px-3 py-1.5 text-[11px] transition hover:bg-gallery-stone font-medium"
+                      >
+                        🎨 Artists ({sampleArtists.length})
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSearchCategory("paintings")}
+                        className="rounded-md bg-gallery-stone/60 px-3 py-1.5 text-[11px] transition hover:bg-gallery-stone font-medium"
+                      >
+                        🖼️ Paintings ({samplePaintings.length})
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {(searchCategory === "all" || searchCategory === "artists") && (
+                      <div className="mb-3">
+                        <p className="mb-1.5 border-b border-gallery-wine/10 pb-1 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-gallery-wine/60">
+                          Artists
+                        </p>
+                        {filteredArtists.length > 0 ? (
+                          filteredArtists.map((artist, idx) => (
+                            <a
+                              key={idx}
+                              href="#artists"
+                              className="block rounded px-2 py-1 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
+                            >
+                              {artist.name}
+                            </a>
+                          ))
+                        ) : (
+                          <p className="px-2 font-sans text-[11px] italic text-gallery-wine/50">
+                            No matching artists
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {(searchCategory === "all" || searchCategory === "paintings") && (
+                      <div>
+                        <p className="mb-1.5 border-b border-gallery-wine/10 pb-1 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-gallery-wine/60">
+                          Paintings
+                        </p>
+                        {filteredPaintings.length > 0 ? (
+                          filteredPaintings.map((painting, idx) => (
+                            <a
+                              key={idx}
+                              href="#exhibitions"
+                              className="block rounded px-2 py-1.5 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
+                            >
+                              <span className="font-medium">{painting.title}</span>
+                              <span className="block text-[10px] text-gallery-wine/70">
+                                by {painting.artist}
+                              </span>
+                            </a>
+                          ))
+                        ) : (
+                          <p className="px-2 font-sans text-[11px] italic text-gallery-wine/50">
+                            No matching paintings
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="flex items-center justify-center p-1 text-gallery-wine transition hover:opacity-80"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-label="Toggle navigation menu"
+          >
+            <MenuIcon className="h-6 w-6 stroke-[2]" />
+          </button>
+        </div>
+      </header>
+
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs transition-opacity"
+          onClick={() => setMenuOpen(false)}
+        >
+          <div
+            className="relative flex h-full w-full max-w-[240px] flex-col bg-white p-5 text-gallery-wine shadow-2xl transition-transform"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between border-b border-gallery-wine/15 pb-3">
+              <span className="font-sans text-[11px] font-bold tracking-[0.2em] text-gallery-wine/60">
+                MENU
+              </span>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                className="p-1 text-sm font-bold text-gallery-wine transition hover:opacity-70"
+                aria-label="Close menu"
+              >
+                ✕
+              </button>
+            </div>
+            <nav className="flex flex-col gap-2.5 font-display text-xs font-bold tracking-[0.18em]">
+              <a
+                href="#top"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                HOME
+              </a>
+              <a
+                href="#artists"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                ARTISTS
+              </a>
+              <a
+                href="#exhibitions"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                EXHIBITIONS
+              </a>
+              <a
+                href="#events"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                EVENTS
+              </a>
+              <a
+                href="#press"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                PRESS
+              </a>
+              <a
+                href="#publications"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                PUBLICATIONS
+              </a>
+              <a
+                href="#about"
+                onClick={() => setMenuOpen(false)}
+                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
+              >
+                ABOUT US
+              </a>
+            </nav>
+          </div>
+        </div>
+      )}
+
+      <section id="top" className="relative mx-auto w-full max-w-[1540px] h-[651px] overflow-hidden opacity-100 rotate-0">
+        <img src={galleryImage} alt="Contemporary artworks displayed in a light-filled gallery" className="h-full w-full object-cover object-center" />
+      </section>
+
+      <section id="exhibitions" className="gallery-section min-h-[430px] pt-14 md:min-h-[590px] md:pt-20">
+        <p className="eyebrow">Exhibitions</p>
+      </section>
+
+      <section id="artists" className="bg-gallery-stone px-5 py-8 md:px-10 md:py-11 lg:px-16">
+        <p className="eyebrow">Artists</p>
+        <div className="relative mt-7 md:mt-9">
+          <button
+            type="button"
+            onClick={scrollArtistLeft}
+            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            aria-label="Previous artists"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={artistScrollRef}
+            className="flex gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
+          >
+            {artistProfiles.map((artistProfile) => (
+              <article key={artistProfile.name} className="group w-[210px] shrink-0 sm:w-[240px] md:w-[270px]">
+                <div className="relative aspect-[.73] overflow-hidden bg-gallery-ink rounded-sm">
+                  <img
+                    src={artistProfile.image}
+                    alt={artistProfile.name}
+                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                </div>
+                <div className="mt-3 text-center">
+                  <p className="font-display text-base font-semibold text-gallery-wine transition group-hover:text-gallery-ink">
+                    {artistProfile.name}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={scrollArtistRight}
+            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            aria-label="Next artists"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </section>
+
+      <section id="exhibitions-slider" className="gallery-section py-12 md:py-20">
+        <p className="eyebrow">Exhibitions</p>
+        <div className="relative mt-8 md:mt-10">
+          <button
+            type="button"
+            onClick={scrollExhibitionLeft}
+            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            aria-label="Previous exhibitions"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={exhibitionScrollRef}
+            className="flex gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
+          >
+            {exhibitionProfiles.map((exhibition) => (
+              <article key={exhibition.title} className="group w-[280px] shrink-0 sm:w-[340px] md:w-[380px]">
+                <div className="aspect-[1.45] overflow-hidden bg-gallery-stone">
+                  <img
+                    src={exhibition.image}
+                    alt={exhibition.title}
+                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                </div>
+                <div className="mt-3">
+                  <p className="font-display text-base font-semibold text-gallery-wine">{exhibition.title}</p>
+                  <p className="font-sans text-xs text-gallery-ink/70">{exhibition.subtitle}</p>
+                  <p className="font-sans text-[10px] text-gallery-wine/60 uppercase tracking-wider mt-0.5">{exhibition.date}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={scrollExhibitionRight}
+            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            aria-label="Next exhibitions"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </section>
+
+      <section className="bg-gallery-stone px-5 py-8 md:px-10 md:py-11 lg:px-16">
+        <p className="eyebrow">Catalogues and publications</p>
+        <p className="py-10 text-center font-display text-sm uppercase tracking-[0.1em] text-gallery-wine md:py-14 md:text-base">Press and media</p>
+      </section>
+
+      <section className="px-5 py-8 text-center md:py-11">
+        <p className="font-display text-xs italic tracking-wide text-gallery-wine/55 md:text-sm">“A painting begins with a problem for which it is a solution.”</p>
+        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[9px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">Enquire about a work</a>
+      </section>
+
+      <footer id="contact" className="relative flex min-h-[100px] flex-col justify-between bg-gallery-wine px-1 pb-0 pt-1 text-white md:px-10 md:pt-2 lg:px-16">
+        <div className="grid gap-9 md:grid-cols-[1.7fr_1fr_1fr] md:gap-12">
+          <div className="mt-[5px]">
+            <p className="font-sans text-[12px] font-bold uppercase tracking-[0.13em] text-white/70">Visit the gallery</p>
+            <h2 className="mt-4 font-display text-[35px] leading-[1.1]">D-33 Defence Colony,<br /><span className="text-[#B08442]">New Delhi 110024</span></h2>
+            <p className="mt-5 max-w-xs font-sans text-[14px] leading-relaxed text-white/70">Walk into a quiet space where painting, sculpture and contemporary practice meet. Tuesday to Saturday, by appointment.</p>
+          </div>
+          <div className="mt-[5px] font-sans text-[14px] leading-[1.9] text-white/80">
+            <p className="mb-2 text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Hours</p>
+            <p>Monday – Saturday</p>
+            <p>10am – 5pm</p>
+            <p className="mb-2 mt-4 text-[14px] font-bold uppercase tracking-[0.07em] text-white/70">E-MAIL</p>
+            <p><a href="mailto:aryanartgallery@gmail.com" className="underline underline-offset-4 hover:text-white">aryanartgallery@gmail.com</a></p>
+          </div>
+          <div className="mt-[5px] font-sans text-[14px] leading-[1.9] text-white/80">
+            <p className="mb-2 text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Telephone</p>
+            <p>+91 11 2433 0334</p>
+            <p className="mb-4">+91 98100 32180</p>
+            <p className="text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Appointments</p>
+            <p className="underline underline-offset-4">Request a prior viewing</p>
+            <div className="mt-4 flex items-center gap-6 text-white">
+              <a href="#" aria-label="Facebook" className="transition hover:opacity-80"><Facebook className="h-[18px] w-[18px] stroke-[2.5]" /></a>
+              <a href="#" aria-label="LinkedIn" className="transition hover:opacity-80"><Linkedin className="h-[18px] w-[18px] stroke-[2.5]" /></a>
+              <a href="#" aria-label="YouTube" className="transition hover:opacity-80"><Youtube className="h-[18px] w-[18px] stroke-[2.5]" /></a>
+              <a href="#" aria-label="Instagram" className="transition hover:opacity-80"><Instagram className="h-[18px] w-[18px] stroke-[2.5]" /></a>
+            </div>
+          </div>
+
+          <div className="mt-[42px] md:col-start-2 md:col-span-2">
+            <p className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[#B08442]">
+              JOIN OUR MAILING LIST
+            </p>
+            <form onSubmit={(e) => e.preventDefault()} className="mt-3 flex h-[42px] w-full max-w-[480px] overflow-hidden">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 bg-[#F9F5EC] px-4 font-sans text-[13px] text-[#222] placeholder:text-[#888] focus:outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Submit email"
+                className="w-[140px] bg-[#B08442] transition hover:bg-[#9E7437]"
+              />
+            </form>
+            <p className="mt-3 font-sans text-[11px] uppercase tracking-[0.16em] text-white">
+              STAY UPDATED WITH EVENTS, EXHIBITIONS AND NEWS
+            </p>
+          </div>
+        </div>
+        <div className="-mx-4 mt-[45px] flex min-h-[70px] flex-col items-center justify-center border-t border-white/20 bg-[#1B1712] py-1 font-display text-[#B08442] md:-mx-10 lg:-mx-16">
+          <div className="flex flex-col items-center" style={{ transform: "translateY(3px)" }}>
+            <span className="inline-flex items-baseline text-[24px] tracking-[0.07em] md:text-[30px]">
+              <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
+              <span className="mx-[0.25em]"></span>
+              <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
+              <span className="mx-[0.25em]"></span>
+              <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
+            </span>
+            <span className="-mt-1.5 block font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#B08442]/85 md:text-[13px]">
+              INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
+            </span>
+          </div>
+          <div className="mt-2 h-[1px] w-full bg-[#B08442]/75" style={{ transform: "translateY(-1px)" }} />
+          <span className="block font-sans text-[11px] font-normal uppercase tracking-[0.07em] text-white/80 md:text-[12px]" style={{ transform: "translateY(4px)" }}>
+            © 2026 ARYAN ART GALLERY &nbsp;·&nbsp; ALL RIGHTS RESERVED
+          </span>
+        </div>
+      </footer>
+    </main>
+  );
+}
