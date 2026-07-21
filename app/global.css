@@ -36,5 +36,5 @@
 
 @layer components {
   .gallery-section { @apply px-5 md:px-10 lg:px-16; }
-  .eyebrow { @apply font-display text-[13px] uppercase tracking-[0.06em] text-gallery-wine md:text-[15px]; }
+  .eyebrow { @apply font-display text-[25px] uppercase tracking-[0.06em] text-gallery-wine md:text-[27px]; }
 }

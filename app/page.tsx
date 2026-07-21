@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Facebook, Linkedin, Youtube, Instagram, Search, Menu as MenuIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { Facebook, Linkedin, Youtube, Instagram, Search, Menu as MenuIcon, ChevronLeft, ChevronRight, Calendar, Clock, MapPin, CheckCircle2, Ticket } from "lucide-react";
 
 const galleryImage =
   "https://images.pexels.com/photos/35336001/pexels-photo-35336001.jpeg?auto=compress&cs=tinysrgb&w=1800";
@@ -114,6 +114,59 @@ const exhibitionProfiles = [
   },
 ];
 
+const eventProfiles = [
+  {
+    id: 1,
+    title: "Indian Modernism: Memory & Form",
+    category: "PANEL DISCUSSION",
+    date: "18 Nov 2026",
+    time: "5:30 PM – 7:30 PM",
+    location: "Main Gallery, New Delhi",
+    image: "https://images.pexels.com/photos/2833389/pexels-photo-2833389.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "An engaging panel discussion with leading art historians and curators exploring post-independence Indian modern art movements.",
+  },
+  {
+    id: 2,
+    title: "VIP Preview: Masters of Canvas",
+    category: "GALLERY PREVIEW",
+    date: "25 Nov 2026",
+    time: "6:00 PM – 9:00 PM",
+    location: "South Wing, Aryan Gallery",
+    image: "https://images.pexels.com/photos/1579708/pexels-photo-1579708.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "An exclusive opening reception featuring private viewing of rare works by S.H. Raza and Tyeb Mehta with live classical music.",
+  },
+  {
+    id: 3,
+    title: "Pigment & Parchment Masterclass",
+    category: "WORKSHOP",
+    date: "05 Dec 2026",
+    time: "11:00 AM – 2:00 PM",
+    location: "Atelier Studio",
+    image: "https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Hands-on studio masterclass on traditional natural pigments, tempera preparation, and canvas priming led by senior conservators.",
+  },
+  {
+    id: 4,
+    title: "Monograph Launch & Walkthrough",
+    category: "BOOK RELEASE",
+    date: "12 Dec 2026",
+    time: "4:00 PM – 6:00 PM",
+    location: "Main Gallery Hall",
+    image: "https://images.pexels.com/photos/20967/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
+    description: "Release of the new retrospective publication 'Lines of Flight', followed by a guided exhibition tour by the author.",
+  },
+  {
+    id: 5,
+    title: "South Asian Art Market Trends",
+    category: "COLLECTOR ROUNDTABLE",
+    date: "15 Jan 2027",
+    time: "5:00 PM – 7:00 PM",
+    location: "Executive Salon",
+    image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Insightful roundtable for emerging and seasoned collectors on provenance, authentication, and market dynamics in modern Indian art.",
+  },
+];
+
 const artists = artistProfiles.map((a) => a.name);
 
 export default function Home() {
@@ -121,9 +174,11 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchCategory, setSearchCategory] = useState<"all" | "artists" | "paintings">("all");
   const [searchFocused, setSearchFocused] = useState(false);
+  const [rsvpSubmitted, setRsvpSubmitted] = useState<number[]>([]);
 
   const artistScrollRef = useRef<HTMLDivElement>(null);
   const exhibitionScrollRef = useRef<HTMLDivElement>(null);
+  const eventScrollRef = useRef<HTMLDivElement>(null);
 
   const scrollArtistLeft = () => {
     if (artistScrollRef.current) {
@@ -147,6 +202,24 @@ export default function Home() {
     if (exhibitionScrollRef.current) {
       exhibitionScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
     }
+  };
+
+  const scrollEventLeft = () => {
+    if (eventScrollRef.current) {
+      eventScrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+    }
+  };
+
+  const scrollEventRight = () => {
+    if (eventScrollRef.current) {
+      eventScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+    }
+  };
+
+  const handleRsvpToggle = (eventId: number) => {
+    setRsvpSubmitted((prev) =>
+      prev.includes(eventId) ? prev.filter((id) => id !== eventId) : [...prev, eventId]
+    );
   };
 
   const filteredArtists = sampleArtists.filter((a) =>
@@ -409,8 +482,101 @@ export default function Home() {
         <img src={galleryImage} alt="Contemporary artworks displayed in a light-filled gallery" className="h-full w-full object-cover object-center" />
       </section>
 
-      <section id="exhibitions" className="gallery-section min-h-[430px] pt-14 md:min-h-[590px] md:pt-20">
-        <p className="eyebrow">Exhibitions</p>
+      <section id="events" className="gallery-section py-12 md:py-20 bg-stone-50/50">
+        <p className="eyebrow">EVENTS</p>
+        <div className="relative mt-8 md:mt-10">
+          <button
+            type="button"
+            onClick={scrollEventLeft}
+            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            aria-label="Previous events"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          <div
+            ref={eventScrollRef}
+            className="flex gap-5 overflow-x-auto scroll-smooth pb-4 no-scrollbar"
+          >
+            {eventProfiles.map((event) => {
+              const isRsvped = rsvpSubmitted.includes(event.id);
+              return (
+                <article
+                  key={event.id}
+                  className="group flex w-[290px] shrink-0 flex-col overflow-hidden rounded-lg border border-gallery-wine/15 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:w-[340px] md:w-[370px]"
+                >
+                  <div className="relative aspect-[1.65] overflow-hidden bg-gallery-stone">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute left-3 top-3 rounded bg-gallery-wine/90 px-2.5 py-1 font-sans text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur-xs">
+                      {event.category}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col justify-between p-5">
+                    <div>
+                      <h3 className="font-display text-lg font-semibold leading-snug text-gallery-wine transition group-hover:text-gallery-ink">
+                        {event.title}
+                      </h3>
+                      <p className="mt-2 font-sans text-xs leading-relaxed text-gallery-ink/75">
+                        {event.description}
+                      </p>
+
+                      <div className="mt-4 flex flex-col gap-1.5 border-t border-gallery-wine/10 pt-3.5 font-sans text-[11px] text-gallery-ink/80">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-3.5 w-3.5 text-gallery-wine shrink-0" />
+                          <span className="font-medium">{event.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Clock className="h-3.5 w-3.5 text-gallery-wine shrink-0" />
+                          <span>{event.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="h-3.5 w-3.5 text-gallery-wine shrink-0" />
+                          <span>{event.location}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleRsvpToggle(event.id)}
+                      className={`mt-5 flex items-center justify-center gap-2 rounded-md py-2.5 px-4 font-sans text-xs font-semibold uppercase tracking-wider transition ${
+                        isRsvped
+                          ? "bg-emerald-800 text-white"
+                          : "bg-gallery-wine text-white hover:bg-gallery-wine/90"
+                      }`}
+                    >
+                      {isRsvped ? (
+                        <>
+                          <CheckCircle2 className="h-4 w-4 shrink-0" />
+                          RSVP Confirmed
+                        </>
+                      ) : (
+                        <>
+                          <Ticket className="h-4 w-4 shrink-0" />
+                          Reserve a Spot
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={scrollEventRight}
+            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            aria-label="Next events"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
       </section>
 
       <section id="artists" className="bg-gallery-stone px-5 py-8 md:px-10 md:py-11 lg:px-16">
@@ -458,7 +624,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="exhibitions-slider" className="gallery-section py-12 md:py-20">
+      <section id="exhibitions" className="gallery-section py-12 md:py-20">
         <p className="eyebrow">Exhibitions</p>
         <div className="relative mt-8 md:mt-10">
           <button
@@ -509,8 +675,8 @@ export default function Home() {
       </section>
 
       <section className="px-5 py-8 text-center md:py-11">
-        <p className="font-display text-xs italic tracking-wide text-gallery-wine/55 md:text-sm">“A painting begins with a problem for which it is a solution.”</p>
-        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[9px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">Enquire about a work</a>
+        <p className="font-display text-[22px] italic tracking-wide text-gallery-wine/55 md:text-[24px]">“A painting begins with a problem for which it is a solution.”</p>
+        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[19px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">Enquire about a work</a>
       </section>
 
       <footer id="contact" className="relative flex min-h-[100px] flex-col justify-between bg-gallery-wine px-1 pb-0 pt-1 text-white md:px-10 md:pt-2 lg:px-16">
