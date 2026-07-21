@@ -403,77 +403,96 @@ export default function Home() {
 
       {menuOpen && (
         <div
-          className="fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs transition-opacity"
+          className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-xs transition-opacity"
           onClick={() => setMenuOpen(false)}
         >
           <div
-            className="relative flex h-full w-full max-w-[240px] flex-col bg-white p-5 text-gallery-wine shadow-2xl transition-transform"
+            className="relative flex h-full w-full max-w-[240px] flex-col justify-between bg-[#5D1414] p-5 text-white shadow-2xl transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-4 flex items-center justify-between border-b border-gallery-wine/15 pb-3">
-              <span className="font-sans text-[11px] font-bold tracking-[0.2em] text-gallery-wine/60">
-                MENU
-              </span>
-              <button
-                type="button"
-                onClick={() => setMenuOpen(false)}
-                className="p-1 text-sm font-bold text-gallery-wine transition hover:opacity-70"
-                aria-label="Close menu"
-              >
-                ✕
-              </button>
+            <div>
+              <div className="mb-4 flex items-center justify-between border-b border-white/20 pb-3">
+                <span className="font-sans text-[11px] font-bold tracking-[0.2em] text-white/70">
+                  MENU
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(false)}
+                  className="p-1 text-sm font-bold text-white transition hover:text-white/70"
+                  aria-label="Close menu"
+                >
+                  ✕
+                </button>
+              </div>
+              <nav className="flex flex-col gap-2 font-display text-xs font-bold tracking-[0.18em] text-white/90">
+                <a
+                  href="#artists"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  ARTISTS
+                </a>
+                <a
+                  href="#exhibitions"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  EXHIBITIONS
+                </a>
+                <a
+                  href="#events"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  EVENTS
+                </a>
+                <a
+                  href="#top"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  COLLECTION ONLINE
+                </a>
+                <a
+                  href="#about"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  ABOUT US
+                </a>
+                <a
+                  href="#press"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  PRESS
+                </a>
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                >
+                  CONTACT US
+                </a>
+              </nav>
             </div>
-            <nav className="flex flex-col gap-2.5 font-display text-xs font-bold tracking-[0.18em]">
-              <a
-                href="#top"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                HOME
-              </a>
-              <a
-                href="#artists"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                ARTISTS
-              </a>
-              <a
-                href="#exhibitions"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                EXHIBITIONS
-              </a>
-              <a
-                href="#events"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                EVENTS
-              </a>
-              <a
-                href="#press"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                PRESS
-              </a>
-              <a
-                href="#publications"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                PUBLICATIONS
-              </a>
-              <a
-                href="#about"
-                onClick={() => setMenuOpen(false)}
-                className="py-1.5 transition hover:translate-x-1 hover:text-gallery-ink"
-              >
-                ABOUT US
-              </a>
-            </nav>
+
+            <div className="mt-auto border-t border-white/20 pt-4">
+              <div className="flex items-center justify-between text-white/80 px-2">
+                <a href="#" aria-label="Instagram" className="transition hover:text-white hover:scale-110">
+                  <Instagram className="h-[18px] w-[18px] stroke-[2]" />
+                </a>
+                <a href="#" aria-label="Facebook" className="transition hover:text-white hover:scale-110">
+                  <Facebook className="h-[18px] w-[18px] stroke-[2]" />
+                </a>
+                <a href="#" aria-label="YouTube" className="transition hover:text-white hover:scale-110">
+                  <Youtube className="h-[18px] w-[18px] stroke-[2]" />
+                </a>
+                <a href="#" aria-label="LinkedIn" className="transition hover:text-white hover:scale-110">
+                  <Linkedin className="h-[18px] w-[18px] stroke-[2]" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}
