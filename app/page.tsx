@@ -233,7 +233,7 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden bg-white text-gallery-ink">
-      <header className="flex h-[72px] items-center justify-between px-2 md:h-[92px] md:px-4 lg:px-6">
+      <header className="fixed inset-x-0 top-0 z-40 flex h-[72px] items-center justify-between border-b border-gallery-wine/10 bg-white px-2 md:h-[92px] md:px-4 lg:px-6">
         <a href="#top" className="leading-none" aria-label="Aryan Art Gallery home">
           <span className="inline-flex items-baseline font-display text-[29px] tracking-[-0.045em] text-gallery-wine md:text-[35px]">
             <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
@@ -400,6 +400,7 @@ export default function Home() {
           </button>
         </div>
       </header>
+      <div className="h-[72px] md:h-[92px]" aria-hidden="true" />
 
       {menuOpen && (
         <div
@@ -698,70 +699,70 @@ export default function Home() {
         <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[19px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">Enquire about a work</a>
       </section>
 
-      <footer id="contact" className="relative flex min-h-[100px] flex-col justify-between bg-gallery-wine px-1 pb-0 pt-1 text-white md:px-10 md:pt-2 lg:px-16">
-        <div className="grid gap-9 md:grid-cols-[1.7fr_1fr_1fr] md:gap-12">
-          <div className="mt-[5px]">
-            <p className="font-sans text-[12px] font-bold uppercase tracking-[0.13em] text-white/70">Visit the gallery</p>
-            <h2 className="mt-4 font-display text-[35px] leading-[1.1]">D-33 Defence Colony,<br /><span className="text-[#B08442]">New Delhi 110024</span></h2>
-            <p className="mt-5 max-w-xs font-sans text-[14px] leading-relaxed text-white/70">Walk into a quiet space where painting, sculpture and contemporary practice meet. Tuesday to Saturday, by appointment.</p>
+      <footer id="contact" className="relative bg-gallery-wine text-white">
+        <div className="grid px-5 py-9 md:min-h-[336px] md:grid-cols-[1.75fr_0.55fr_0.55fr] md:grid-rows-[auto_auto] md:gap-x-16 md:px-10 md:pb-7 md:pt-10 lg:px-[42px]">
+          <div className="md:row-span-2">
+            <p className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white/85">Visit the gallery</p>
+            <h2 className="mt-7 font-display text-[23px] leading-[1.2] tracking-[0.04em] text-white/80">D-33 Defence Colony,<br /><span className="italic text-[#B08442]">New Delhi 110024</span></h2>
+            <p className="mt-9 max-w-[390px] font-sans text-[11px] leading-[2] tracking-[0.04em] text-white/60">Walk-ins are welcome during opening hours. For private viewings,<br className="hidden lg:block" /> valuation or works currently in the viewing room, we recommend<br className="hidden lg:block" /> an appointment.</p>
           </div>
-          <div className="mt-[5px] font-sans text-[14px] leading-[1.9] text-white/80">
-            <p className="mb-2 text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Hours</p>
-            <p>Monday – Saturday</p>
-            <p>10am – 5pm</p>
-            <p className="mb-2 mt-4 text-[14px] font-bold uppercase tracking-[0.07em] text-white/70">E-MAIL</p>
+          <div className="mt-8 font-sans text-[11px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Hours</p>
+            <p>Monday - Saturday</p>
+            <p>10pm - 5pm</p>
+            <p className="mb-3 mt-6 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Email</p>
             <p><a href="mailto:aryanartgallery@gmail.com" className="underline underline-offset-4 hover:text-white">aryanartgallery@gmail.com</a></p>
           </div>
-          <div className="mt-[5px] font-sans text-[14px] leading-[1.9] text-white/80">
-            <p className="mb-2 text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Telephone</p>
-            <p>+91 11 2433 0334</p>
-            <p className="mb-4">+91 98100 32180</p>
-            <p className="text-[14px] font-bold uppercase tracking-[0.13em] text-white/70">Appointments</p>
-            <p className="underline underline-offset-4">Request a prior viewing</p>
-            <div className="mt-4 flex items-center gap-6 text-white">
-              <a href="#" aria-label="Facebook" className="transition hover:opacity-80"><Facebook className="h-[18px] w-[18px] stroke-[2.5]" /></a>
-              <a href="#" aria-label="LinkedIn" className="transition hover:opacity-80"><Linkedin className="h-[18px] w-[18px] stroke-[2.5]" /></a>
-              <a href="#" aria-label="YouTube" className="transition hover:opacity-80"><Youtube className="h-[18px] w-[18px] stroke-[2.5]" /></a>
-              <a href="#" aria-label="Instagram" className="transition hover:opacity-80"><Instagram className="h-[18px] w-[18px] stroke-[2.5]" /></a>
+          <div className="mt-8 font-sans text-[11px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Telephone</p>
+            <p>011-41551277</p>
+            <p>011-41550709</p>
+            <p className="mb-3 mt-6 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Appointments</p>
+            <p className="underline underline-offset-4">Request a private viewing</p>
+            <div className="mt-5 flex items-center gap-5 text-white">
+              <a href="#" aria-label="Facebook" className="transition hover:opacity-80"><Facebook className="h-[15px] w-[15px] fill-white stroke-[2.5]" /></a>
+              <a href="#" aria-label="LinkedIn" className="transition hover:opacity-80"><Linkedin className="h-[15px] w-[15px] fill-white stroke-[2.5]" /></a>
+              <a href="#" aria-label="YouTube" className="transition hover:opacity-80"><Youtube className="h-[15px] w-[15px] fill-white stroke-[2.5]" /></a>
+              <a href="#" aria-label="Instagram" className="transition hover:opacity-80"><Instagram className="h-[15px] w-[15px] stroke-[2.5]" /></a>
             </div>
           </div>
 
-          <div className="mt-[42px] md:col-start-2 md:col-span-2">
-            <p className="font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-[#B08442]">
+          <div className="mt-10 md:col-span-2 md:col-start-2 md:mt-0 md:self-end">
+            <p className="font-sans text-[9px] font-medium uppercase tracking-[0.18em] text-[#B08442]">
               JOIN OUR MAILING LIST
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="mt-3 flex h-[42px] w-full max-w-[480px] overflow-hidden">
+            <form onSubmit={(e) => e.preventDefault()} className="mt-1 flex h-[25px] w-full max-w-[345px] overflow-hidden">
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 bg-[#F9F5EC] px-4 font-sans text-[13px] text-[#222] placeholder:text-[#888] focus:outline-none"
+                className="min-w-0 flex-1 bg-[#F9F5EC] px-7 font-sans text-[9px] tracking-[0.08em] text-[#222] placeholder:text-[#777] focus:outline-none"
               />
               <button
                 type="submit"
                 aria-label="Submit email"
-                className="w-[140px] bg-[#B08442] transition hover:bg-[#9E7437]"
+                className="w-[77px] bg-[#B08442] transition hover:bg-[#9E7437]"
               />
             </form>
-            <p className="mt-3 font-sans text-[11px] uppercase tracking-[0.16em] text-white">
+            <p className="mt-1 font-sans text-[7px] uppercase tracking-[0.13em] text-white/80">
               STAY UPDATED WITH EVENTS, EXHIBITIONS AND NEWS
             </p>
           </div>
         </div>
-        <div className="-mx-4 mt-[45px] flex min-h-[70px] flex-col items-center justify-center border-t border-white/20 bg-[#1B1712] py-1 font-display text-[#B08442] md:-mx-10 lg:-mx-16">
-          <div className="flex flex-col items-center" style={{ transform: "translateY(3px)" }}>
-            <span className="inline-flex items-baseline text-[24px] tracking-[0.07em] md:text-[30px]">
+        <div className="flex h-[72px] flex-col items-center justify-center bg-[#1B1712] font-display text-[#B08442]">
+          <div className="flex flex-col items-center">
+            <span className="inline-flex items-baseline text-[20px] tracking-[0.04em] md:text-[23px]">
               <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
               <span className="mx-[0.25em]"></span>
               <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
               <span className="mx-[0.25em]"></span>
               <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
             </span>
-            <span className="-mt-1.5 block font-sans text-[11px] font-medium uppercase tracking-[0.2em] text-[#B08442]/85 md:text-[13px]">
+            <span className="-mt-1 block font-sans text-[8px] font-medium uppercase tracking-[0.13em] text-[#B08442]/85">
               INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
             </span>
           </div>
-          <div className="mt-2 h-[1px] w-full bg-[#B08442]/75" style={{ transform: "translateY(-1px)" }} />
-          <span className="block font-sans text-[11px] font-normal uppercase tracking-[0.07em] text-white/80 md:text-[12px]" style={{ transform: "translateY(4px)" }}>
+          <div className="mt-2 h-px w-full bg-[#B08442]/75" />
+          <span className="mt-1 block font-sans text-[9px] font-normal uppercase tracking-[0.07em] text-white/55">
             © 2026 ARYAN ART GALLERY &nbsp;·&nbsp; ALL RIGHTS RESERVED
           </span>
         </div>
