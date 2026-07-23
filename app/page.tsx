@@ -249,34 +249,43 @@ export default function Home() {
 
         <div className="flex shrink-0 items-center gap-1 text-gallery-wine sm:gap-2 md:gap-5">
           <div className="relative">
-            <div className="flex items-center rounded-full border border-gallery-wine/30 bg-gallery-stone/50 py-1.5 pl-2 pr-2 transition focus-within:border-gallery-wine focus-within:bg-white sm:pl-3 sm:pr-3">
-              <Search className="h-3.5 w-3.5 shrink-0 text-gallery-wine/70" />
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setSearchFocused(true)}
-                onBlur={() => setTimeout(() => setSearchFocused(false), 250)}
-                className="h-6 w-10 bg-transparent pl-1.5 pr-0 font-sans text-[11px] text-gallery-ink placeholder:text-gallery-wine/60 focus:outline-none min-[380px]:w-16 sm:w-24 sm:pl-2 sm:pr-1 sm:text-xs md:w-44"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="px-1 text-xs text-gallery-wine/50 hover:text-gallery-wine"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
+            <button
+              type="button"
+              onClick={() => setSearchFocused((open) => !open)}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-gallery-wine transition hover:bg-gallery-stone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gallery-wine/40"
+              aria-label="Search the gallery"
+              aria-expanded={searchFocused}
+            >
+              <Search className="h-5 w-5 stroke-[2]" />
+            </button>
 
             {/* Category Selection & Search Panel on Click/Focus */}
             {searchFocused && (
               <div
-                onMouseDown={(e) => e.preventDefault()}
                 className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md md:absolute md:left-auto md:right-0 md:top-full md:w-80"
               >
+                <div className="mb-3 flex items-center rounded-lg border border-gallery-wine/25 bg-gallery-stone/30 px-3 focus-within:border-gallery-wine focus-within:bg-white">
+                  <Search className="h-4 w-4 shrink-0 text-gallery-wine/60" />
+                  <input
+                    type="text"
+                    placeholder="Search artists and paintings..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                    className="h-10 min-w-0 flex-1 bg-transparent px-2 font-sans text-xs text-gallery-ink placeholder:text-gallery-wine/50 focus:outline-none"
+                  />
+                  {searchQuery && (
+                    <button
+                      type="button"
+                      onClick={() => setSearchQuery("")}
+                      className="p-1 text-xs text-gallery-wine/50 hover:text-gallery-wine"
+                      aria-label="Clear search"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+
                 {/* Category Selection Tabs */}
                 <div className="mb-3 flex items-center gap-1 rounded-lg bg-gallery-stone/60 p-1 font-sans text-[11px] font-medium uppercase tracking-wider text-gallery-wine">
                   <button
