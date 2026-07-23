@@ -268,7 +268,7 @@ export default function Home() {
               <Search className="h-5 w-5 stroke-[2]" />
             </button>
 
-            {/* Category Selection & Search Panel on Click/Focus */}
+            {/* Search field opens inline within the header */}
             {searchFocused && (
               <>
                 <button
@@ -278,7 +278,7 @@ export default function Home() {
                   aria-label="Close search"
                 />
                 <div
-                  className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] md:absolute md:left-auto md:right-0 md:top-full md:w-80"
+                  className="absolute right-0 top-1/2 z-50 w-[min(20rem,calc(100vw-4.5rem))] -translate-y-1/2"
                 >
                 <div className="flex items-center overflow-hidden rounded-full border border-gallery-wine/25 bg-white px-3 shadow-lg focus-within:border-gallery-wine">
                   <Search className="h-4 w-4 shrink-0 text-gallery-wine/60" />
@@ -303,7 +303,7 @@ export default function Home() {
                 </div>
 
                 {searchQuery.trim() !== "" && (
-                  <div className="mt-2 max-h-64 overflow-y-auto rounded-xl bg-white p-2 shadow-xl">
+                  <div className="absolute right-0 top-full mt-2 max-h-64 w-full overflow-y-auto rounded-xl bg-white p-2 shadow-xl">
                     {filteredArtists.map((artist, idx) => (
                       <a
                         key={`artist-${idx}`}
@@ -451,7 +451,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollEventLeft}
-            className="absolute -left-11 top-[25%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
+            className="absolute -left-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-left-12"
             aria-label="Previous events"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -517,7 +517,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollEventRight}
-            className="absolute -right-11 top-[25%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
+            className="absolute -right-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-right-12"
             aria-label="Next events"
           >
             <ChevronRight className="h-5 w-5" />
@@ -531,7 +531,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollArtistLeft}
-            className="absolute -left-11 top-[45%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
+            className="absolute -left-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-left-12"
             aria-label="Previous artists"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -547,8 +547,8 @@ export default function Home() {
                 className="grid w-full shrink-0 snap-start grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 xl:grid-cols-4"
               >
                 {artistProfiles.slice(setIndex * 4, setIndex * 4 + 4).map((artistProfile) => (
-                  <article key={artistProfile.name} className="group w-full max-w-[306.14px]">
-                    <div className="relative aspect-[306.14/414] w-full overflow-hidden rounded-sm bg-gallery-ink xl:h-[414px] xl:w-[306.14px]">
+                  <article key={artistProfile.name} className="group w-[210px] sm:w-[240px] md:w-[270px]">
+                    <div className="relative aspect-[.73] w-full overflow-hidden rounded-sm bg-gallery-ink">
                       <img
                         src={artistProfile.image}
                         alt={artistProfile.name}
@@ -569,7 +569,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollArtistRight}
-            className="absolute -right-11 top-[45%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
+            className="absolute -right-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-right-12"
             aria-label="Next artists"
           >
             <ChevronRight className="h-5 w-5" />
@@ -583,7 +583,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollExhibitionLeft}
-            className="absolute -left-11 top-[30%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
+            className="absolute -left-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-left-12"
             aria-label="Previous exhibitions"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -599,7 +599,7 @@ export default function Home() {
                 className="grid w-full shrink-0 snap-start grid-cols-1 gap-4 sm:grid-cols-3"
               >
                 {exhibitionProfiles.slice(setIndex * 3, setIndex * 3 + 3).map((exhibition) => (
-                  <article key={exhibition.title} className="group min-w-0">
+                  <article key={exhibition.title} className="group flex h-full min-w-0 flex-col">
                     <div className="aspect-[1.37] overflow-hidden bg-gallery-stone">
                       <img
                         src={exhibition.image}
@@ -607,14 +607,14 @@ export default function Home() {
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="bg-[#F5F2EA] px-4 py-4 md:px-5 md:py-5">
+                    <div className="flex min-h-[140px] flex-1 flex-col bg-[#F5F2EA] px-4 py-4 md:px-5 md:py-5">
                       <p className="font-inter text-[10px] font-medium uppercase tracking-[0.08em] text-[#B08442] md:text-[11px]">
                         Gallery Exhibition
                       </p>
                       <p className="mt-1.5 font-wordmark text-[20px] font-semibold uppercase leading-[1.08] text-gallery-wine md:text-[22px]">
                         {exhibition.title}
                       </p>
-                      <p className="mt-2 font-inter text-[11px] tracking-[0.04em] md:text-xs">
+                      <p className="mt-auto pt-2 font-inter text-[11px] tracking-[0.04em] md:text-xs">
                         <span className="font-medium uppercase text-[#B08442]">{exhibition.subtitle}</span>{" "}
                         <span className="font-medium text-gallery-wine">{exhibition.date}</span>
                       </p>
@@ -628,7 +628,7 @@ export default function Home() {
           <button
             type="button"
             onClick={scrollExhibitionRight}
-            className="absolute -right-11 top-[30%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
+            className="absolute -right-11 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-gallery-wine drop-shadow-[0_3px_4px_rgba(93,20,20,0.35)] transition hover:scale-110 hover:text-gallery-ink md:-right-12"
             aria-label="Next exhibitions"
           >
             <ChevronRight className="h-5 w-5" />
