@@ -464,12 +464,12 @@ export default function Home() {
             {Array.from({ length: Math.ceil(eventProfiles.length / 3) }, (_, setIndex) => (
               <div
                 key={setIndex}
-                className="grid w-full shrink-0 snap-start grid-cols-1 gap-5 sm:grid-cols-3"
+                className="contents lg:grid lg:w-full lg:shrink-0 lg:snap-start lg:grid-cols-3 lg:gap-5"
               >
                 {eventProfiles.slice(setIndex * 3, setIndex * 3 + 3).map((event) => (
                   <article
                     key={event.id}
-                    className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-gallery-wine/15 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                    className="group flex w-full shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-gallery-wine/15 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md lg:w-auto lg:shrink"
                   >
                   <div className="relative aspect-[1.65] overflow-hidden bg-gallery-stone">
                     <img
@@ -544,10 +544,10 @@ export default function Home() {
             {Array.from({ length: Math.ceil(artistProfiles.length / 4) }, (_, setIndex) => (
               <div
                 key={setIndex}
-                className="grid w-full shrink-0 snap-start grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 xl:grid-cols-4"
+                className="contents lg:grid lg:w-full lg:shrink-0 lg:snap-start lg:grid-cols-2 lg:justify-items-center lg:gap-4 xl:grid-cols-4"
               >
                 {artistProfiles.slice(setIndex * 4, setIndex * 4 + 4).map((artistProfile) => (
-                  <article key={artistProfile.name} className="group w-[210px] sm:w-[240px] md:w-[270px]">
+                  <article key={artistProfile.name} className="group w-full shrink-0 snap-start lg:w-[270px] lg:shrink">
                     <div className="relative aspect-[.73] w-full overflow-hidden rounded-sm bg-gallery-ink">
                       <img
                         src={artistProfile.image}
@@ -596,10 +596,10 @@ export default function Home() {
             {Array.from({ length: Math.ceil(exhibitionProfiles.length / 3) }, (_, setIndex) => (
               <div
                 key={setIndex}
-                className="grid w-full shrink-0 snap-start grid-cols-1 gap-4 sm:grid-cols-3"
+                className="contents lg:grid lg:w-full lg:shrink-0 lg:snap-start lg:grid-cols-3 lg:gap-4"
               >
                 {exhibitionProfiles.slice(setIndex * 3, setIndex * 3 + 3).map((exhibition) => (
-                  <article key={exhibition.title} className="group flex h-full min-w-0 flex-col">
+                  <article key={exhibition.title} className="group flex h-full w-full shrink-0 snap-start flex-col lg:w-auto lg:shrink">
                     <div className="aspect-[1.37] overflow-hidden bg-gallery-stone">
                       <img
                         src={exhibition.image}
@@ -643,7 +643,7 @@ export default function Home() {
 
       <section className="px-5 py-8 text-center md:py-11">
         <p className="font-wordmark text-[22px] italic tracking-wide text-[#B08442] md:text-[24px]">“A painting bought well is a pleasure for season. A painting kept well is an Inheritance.”</p>
-        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[19px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">ENQUIRE</a>
+        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-inter text-[17px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">ENQUIRE</a>
       </section>
 
       <footer id="contact" className="relative bg-gallery-wine text-white">
