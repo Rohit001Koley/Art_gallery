@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Facebook, Linkedin, Youtube, Instagram, Search, Menu as MenuIcon, ChevronLeft, ChevronRight, Calendar, Clock, MapPin, CheckCircle2, Ticket } from "lucide-react";
+import { Facebook, Linkedin, Youtube, Instagram, Search, Menu as MenuIcon, ChevronLeft, ChevronRight, Calendar, Clock, MapPin } from "lucide-react";
 
-const galleryImage =
-  "https://images.pexels.com/photos/35336001/pexels-photo-35336001.jpeg?auto=compress&cs=tinysrgb&w=1800";
+const galleryImage = "/gallery-banner.jpg";
 const portraitImage =
   "https://images.pexels.com/photos/6669746/pexels-photo-6669746.jpeg?auto=compress&cs=tinysrgb&w=900";
 const exhibitionImage =
@@ -172,9 +171,7 @@ const artists = artistProfiles.map((a) => a.name);
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchCategory, setSearchCategory] = useState<"all" | "artists" | "paintings">("all");
   const [searchFocused, setSearchFocused] = useState(false);
-  const [rsvpSubmitted, setRsvpSubmitted] = useState<number[]>([]);
 
   const artistScrollRef = useRef<HTMLDivElement>(null);
   const exhibitionScrollRef = useRef<HTMLDivElement>(null);
@@ -182,44 +179,56 @@ export default function Home() {
 
   const scrollArtistLeft = () => {
     if (artistScrollRef.current) {
-      artistScrollRef.current.scrollBy({ left: -320, behavior: "smooth" });
+      artistScrollRef.current.scrollBy({
+        left: -artistScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollArtistRight = () => {
     if (artistScrollRef.current) {
-      artistScrollRef.current.scrollBy({ left: 320, behavior: "smooth" });
+      artistScrollRef.current.scrollBy({
+        left: artistScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollExhibitionLeft = () => {
     if (exhibitionScrollRef.current) {
-      exhibitionScrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+      exhibitionScrollRef.current.scrollBy({
+        left: -exhibitionScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollExhibitionRight = () => {
     if (exhibitionScrollRef.current) {
-      exhibitionScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+      exhibitionScrollRef.current.scrollBy({
+        left: exhibitionScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollEventLeft = () => {
     if (eventScrollRef.current) {
-      eventScrollRef.current.scrollBy({ left: -360, behavior: "smooth" });
+      eventScrollRef.current.scrollBy({
+        left: -eventScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
   };
 
   const scrollEventRight = () => {
     if (eventScrollRef.current) {
-      eventScrollRef.current.scrollBy({ left: 360, behavior: "smooth" });
+      eventScrollRef.current.scrollBy({
+        left: eventScrollRef.current.clientWidth,
+        behavior: "smooth",
+      });
     }
-  };
-
-  const handleRsvpToggle = (eventId: number) => {
-    setRsvpSubmitted((prev) =>
-      prev.includes(eventId) ? prev.filter((id) => id !== eventId) : [...prev, eventId]
-    );
   };
 
   const filteredArtists = sampleArtists.filter((a) =>
@@ -233,16 +242,16 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden bg-white text-gallery-ink">
-      <header className="fixed inset-x-0 top-0 z-40 flex h-[72px] items-center gap-2 border-b border-gallery-wine/10 bg-white px-2 sm:gap-3 sm:px-3 md:h-[92px] md:px-4 lg:px-6">
+      <header className="fixed inset-x-0 top-0 z-40 flex h-[72px] items-center gap-2 border-b border-gallery-wine/10 bg-[#F5F2EB] px-2 sm:gap-3 sm:px-3 md:h-[92px] md:px-4 lg:px-6">
         <a href="#top" className="min-w-0 flex-1 overflow-hidden leading-none" aria-label="Aryan Art Gallery home">
-          <span className="inline-flex max-w-full items-baseline whitespace-nowrap font-display text-[clamp(18px,5.5vw,29px)] tracking-[-0.045em] text-gallery-wine md:text-[35px]">
+          <span className="inline-flex max-w-full items-baseline whitespace-nowrap font-wordmark text-[clamp(15px,4.8vw,26px)] font-medium tracking-[-0.045em] text-gallery-wine md:text-[32px]">
             <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
             <span className="mx-[0.25em]"></span>
             <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
             <span className="mx-[0.25em]"></span>
             <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
           </span>
-          <span className="mt-1 block truncate whitespace-nowrap font-sans text-[5px] font-medium tracking-[0.08em] text-gallery-wine min-[380px]:text-[6px] sm:text-[8px] sm:tracking-[0.15em] md:text-[10px]">
+          <span className="mt-1 block truncate whitespace-nowrap font-inter text-[7px] font-medium tracking-[0.08em] text-gallery-wine min-[380px]:text-[8px] sm:text-[10px] sm:tracking-[0.15em] md:text-[11px]">
             INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
           </span>
         </a>
@@ -269,9 +278,9 @@ export default function Home() {
                   aria-label="Close search"
                 />
                 <div
-                  className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md md:absolute md:left-auto md:right-0 md:top-full md:w-80"
+                  className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] md:absolute md:left-auto md:right-0 md:top-full md:w-80"
                 >
-                <div className="mb-3 flex items-center rounded-lg border border-gallery-wine/25 bg-gallery-stone/30 px-3 focus-within:border-gallery-wine focus-within:bg-white">
+                <div className="flex items-center overflow-hidden rounded-full border border-gallery-wine/25 bg-white px-3 shadow-lg focus-within:border-gallery-wine">
                   <Search className="h-4 w-4 shrink-0 text-gallery-wine/60" />
                   <input
                     type="text"
@@ -293,114 +302,35 @@ export default function Home() {
                   )}
                 </div>
 
-                {/* Category Selection Tabs */}
-                <div className="mb-3 flex items-center gap-1 rounded-lg bg-gallery-stone/60 p-1 font-sans text-[11px] font-medium uppercase tracking-wider text-gallery-wine">
-                  <button
-                    type="button"
-                    onClick={() => setSearchCategory("all")}
-                    className={`flex-1 rounded py-1 transition ${searchCategory === "all"
-                      ? "bg-white font-bold text-gallery-wine shadow-sm"
-                      : "hover:text-gallery-ink"
-                      }`}
-                  >
-                    All
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSearchCategory("artists")}
-                    className={`flex-1 rounded py-1 transition ${searchCategory === "artists"
-                      ? "bg-white font-bold text-gallery-wine shadow-sm"
-                      : "hover:text-gallery-ink"
-                      }`}
-                  >
-                    Artists
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setSearchCategory("paintings")}
-                    className={`flex-1 rounded py-1 transition ${searchCategory === "paintings"
-                      ? "bg-white font-bold text-gallery-wine shadow-sm"
-                      : "hover:text-gallery-ink"
-                      }`}
-                  >
-                    Paintings
-                  </button>
-                </div>
-
-                {/* Content / Results */}
-                {searchQuery.trim() === "" ? (
-                  <div className="py-2 font-sans text-xs text-gallery-wine/70">
-                    <p className="mb-2 font-sans text-[10px] font-bold uppercase tracking-wider text-gallery-wine">
-                      Categories
-                    </p>
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setSearchCategory("artists")}
-                        className="rounded-md bg-gallery-stone/60 px-3 py-1.5 text-[11px] transition hover:bg-gallery-stone font-medium"
+                {searchQuery.trim() !== "" && (
+                  <div className="mt-2 max-h-64 overflow-y-auto rounded-xl bg-white p-2 shadow-xl">
+                    {filteredArtists.map((artist, idx) => (
+                      <a
+                        key={`artist-${idx}`}
+                        href="#artists"
+                        onClick={() => setSearchFocused(false)}
+                        className="block rounded px-2 py-2 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
                       >
-                        🎨 Artists ({sampleArtists.length})
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setSearchCategory("paintings")}
-                        className="rounded-md bg-gallery-stone/60 px-3 py-1.5 text-[11px] transition hover:bg-gallery-stone font-medium"
+                        {artist.name}
+                      </a>
+                    ))}
+                    {filteredPaintings.map((painting, idx) => (
+                      <a
+                        key={`painting-${idx}`}
+                        href="#exhibitions"
+                        onClick={() => setSearchFocused(false)}
+                        className="block rounded px-2 py-2 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
                       >
-                        🖼️ Paintings ({samplePaintings.length})
-                      </button>
-                    </div>
+                        <span className="font-medium">{painting.title}</span>
+                        <span className="block text-[10px] text-gallery-wine/70">by {painting.artist}</span>
+                      </a>
+                    ))}
+                    {filteredArtists.length === 0 && filteredPaintings.length === 0 && (
+                      <p className="px-2 py-2 font-sans text-[11px] italic text-gallery-wine/50">
+                        No matching results
+                      </p>
+                    )}
                   </div>
-                ) : (
-                  <>
-                    {(searchCategory === "all" || searchCategory === "artists") && (
-                      <div className="mb-3">
-                        <p className="mb-1.5 border-b border-gallery-wine/10 pb-1 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-gallery-wine/60">
-                          Artists
-                        </p>
-                        {filteredArtists.length > 0 ? (
-                          filteredArtists.map((artist, idx) => (
-                            <a
-                              key={idx}
-                              href="#artists"
-                              className="block rounded px-2 py-1 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
-                            >
-                              {artist.name}
-                            </a>
-                          ))
-                        ) : (
-                          <p className="px-2 font-sans text-[11px] italic text-gallery-wine/50">
-                            No matching artists
-                          </p>
-                        )}
-                      </div>
-                    )}
-
-                    {(searchCategory === "all" || searchCategory === "paintings") && (
-                      <div>
-                        <p className="mb-1.5 border-b border-gallery-wine/10 pb-1 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-gallery-wine/60">
-                          Paintings
-                        </p>
-                        {filteredPaintings.length > 0 ? (
-                          filteredPaintings.map((painting, idx) => (
-                            <a
-                              key={idx}
-                              href="#exhibitions"
-                              className="block rounded px-2 py-1.5 font-sans text-xs text-gallery-ink hover:bg-gallery-stone/60"
-                            >
-                              <span className="font-medium">{painting.title}</span>
-                              <span className="block text-[10px] text-gallery-wine/70">
-                                by {painting.artist}
-                              </span>
-                            </a>
-                          ))
-                        ) : (
-                          <p className="px-2 font-sans text-[11px] italic text-gallery-wine/50">
-                            No matching paintings
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </>
                 )}
                 </div>
               </>
@@ -425,78 +355,73 @@ export default function Home() {
           onClick={() => setMenuOpen(false)}
         >
           <div
-            className="relative flex h-full w-full max-w-[240px] flex-col justify-between bg-[#5D1414] p-5 text-white shadow-2xl transition-transform"
+            className="relative flex h-full w-full max-w-[240px] flex-col items-center justify-center bg-[#5D1414] p-5 text-center text-[#B08442] shadow-2xl transition-transform"
             onClick={(e) => e.stopPropagation()}
           >
-            <div>
-              <div className="mb-4 flex items-center justify-between border-b border-white/20 pb-3">
-                <span className="font-sans text-[11px] font-bold tracking-[0.2em] text-white/70">
-                  MENU
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setMenuOpen(false)}
-                  className="p-1 text-sm font-bold text-white transition hover:text-white/70"
-                  aria-label="Close menu"
-                >
-                  ✕
-                </button>
-              </div>
-              <nav className="flex flex-col gap-2 font-display text-xs font-bold tracking-[0.18em] text-white/90">
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              className="absolute right-5 top-5 p-1 text-sm font-bold text-[#B08442] transition hover:text-[#C69A55]"
+              aria-label="Close menu"
+            >
+              ✕
+            </button>
+
+            <div className="flex w-full flex-col items-center justify-center gap-12">
+              <nav className="flex flex-col items-center gap-5 font-display text-xs font-bold tracking-[0.18em] text-[#B08442] sm:gap-6">
                 <a
                   href="#artists"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   ARTISTS
                 </a>
                 <a
                   href="#exhibitions"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   EXHIBITIONS
                 </a>
                 <a
                   href="#events"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   EVENTS
                 </a>
                 <a
                   href="#top"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   COLLECTION ONLINE
                 </a>
                 <a
-                  href="#about"
+                  href="#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   ABOUT US
                 </a>
                 <a
                   href="#press"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   PRESS
                 </a>
                 <a
                   href="#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="py-1.5 transition hover:translate-x-1 hover:text-white"
+                  className="transition hover:scale-105 hover:text-white"
                 >
                   CONTACT US
                 </a>
               </nav>
-            </div>
 
-            <div className="mt-auto border-t border-white/20 pt-4">
-              <div className="flex items-center justify-between text-white/80 px-2">
+              <div className="w-full max-w-[180px] border-t border-[#B08442]/40 pt-6">
+                <div className="flex items-center justify-center gap-7 text-[#B08442]">
                 <a href="#" aria-label="Instagram" className="transition hover:text-white hover:scale-110">
                   <Instagram className="h-[18px] w-[18px] stroke-[2]" />
                 </a>
@@ -509,23 +434,24 @@ export default function Home() {
                 <a href="#" aria-label="LinkedIn" className="transition hover:text-white hover:scale-110">
                   <Linkedin className="h-[18px] w-[18px] stroke-[2]" />
                 </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      <section id="top" className="relative mx-auto w-full max-w-[1540px] h-[651px] overflow-hidden opacity-100 rotate-0">
-        <img src={galleryImage} alt="Contemporary artworks displayed in a light-filled gallery" className="h-full w-full object-cover object-center" />
+      <section id="top" className="relative mx-auto aspect-[4/5] w-full max-w-[1540px] overflow-hidden sm:aspect-[4/3] md:aspect-auto md:h-[651px]">
+        <img src={galleryImage} alt="Contemporary artworks displayed in a light-filled gallery" className="h-full w-full object-cover object-center sm:object-center" />
       </section>
 
       <section id="events" className="gallery-section py-12 md:py-20 bg-stone-50/50">
         <p className="eyebrow">EVENTS</p>
-        <div className="relative mt-8 md:mt-10">
+        <div className="relative mx-6 mt-8 md:mx-8 md:mt-10 lg:mx-0">
           <button
             type="button"
             onClick={scrollEventLeft}
-            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            className="absolute -left-11 top-[25%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
             aria-label="Previous events"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -533,15 +459,18 @@ export default function Home() {
 
           <div
             ref={eventScrollRef}
-            className="flex gap-5 overflow-x-auto scroll-smooth pb-4 no-scrollbar"
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 no-scrollbar"
           >
-            {eventProfiles.map((event) => {
-              const isRsvped = rsvpSubmitted.includes(event.id);
-              return (
-                <article
-                  key={event.id}
-                  className="group flex w-[290px] shrink-0 flex-col overflow-hidden rounded-lg border border-gallery-wine/15 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:w-[340px] md:w-[370px]"
-                >
+            {Array.from({ length: Math.ceil(eventProfiles.length / 3) }, (_, setIndex) => (
+              <div
+                key={setIndex}
+                className="grid w-full shrink-0 snap-start grid-cols-1 gap-5 sm:grid-cols-3"
+              >
+                {eventProfiles.slice(setIndex * 3, setIndex * 3 + 3).map((event) => (
+                  <article
+                    key={event.id}
+                    className="group flex min-w-0 flex-col overflow-hidden rounded-lg border border-gallery-wine/15 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                  >
                   <div className="relative aspect-[1.65] overflow-hidden bg-gallery-stone">
                     <img
                       src={event.image}
@@ -578,37 +507,17 @@ export default function Home() {
                       </div>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => handleRsvpToggle(event.id)}
-                      className={`mt-5 flex items-center justify-center gap-2 rounded-md py-2.5 px-4 font-sans text-xs font-semibold uppercase tracking-wider transition ${
-                        isRsvped
-                          ? "bg-emerald-800 text-white"
-                          : "bg-gallery-wine text-white hover:bg-gallery-wine/90"
-                      }`}
-                    >
-                      {isRsvped ? (
-                        <>
-                          <CheckCircle2 className="h-4 w-4 shrink-0" />
-                          RSVP Confirmed
-                        </>
-                      ) : (
-                        <>
-                          <Ticket className="h-4 w-4 shrink-0" />
-                          Reserve a Spot
-                        </>
-                      )}
-                    </button>
                   </div>
-                </article>
-              );
-            })}
+                  </article>
+                ))}
+              </div>
+            ))}
           </div>
 
           <button
             type="button"
             onClick={scrollEventRight}
-            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            className="absolute -right-11 top-[25%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
             aria-label="Next events"
           >
             <ChevronRight className="h-5 w-5" />
@@ -616,13 +525,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="artists" className="bg-gallery-stone px-5 py-8 md:px-10 md:py-11 lg:px-16">
+      <section id="artists" className="gallery-section bg-gallery-stone py-8 md:py-11">
         <p className="eyebrow">Artists</p>
-        <div className="relative mt-7 md:mt-9">
+        <div className="relative mx-6 mt-7 md:mx-8 md:mt-9 lg:mx-0">
           <button
             type="button"
             onClick={scrollArtistLeft}
-            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            className="absolute -left-11 top-[45%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
             aria-label="Previous artists"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -630,30 +539,37 @@ export default function Home() {
 
           <div
             ref={artistScrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
           >
-            {artistProfiles.map((artistProfile) => (
-              <article key={artistProfile.name} className="group w-[210px] shrink-0 sm:w-[240px] md:w-[270px]">
-                <div className="relative aspect-[.73] overflow-hidden bg-gallery-ink rounded-sm">
-                  <img
-                    src={artistProfile.image}
-                    alt={artistProfile.name}
-                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="mt-3 text-center">
-                  <p className="font-display text-base font-semibold text-gallery-wine transition group-hover:text-gallery-ink">
-                    {artistProfile.name}
-                  </p>
-                </div>
-              </article>
+            {Array.from({ length: Math.ceil(artistProfiles.length / 4) }, (_, setIndex) => (
+              <div
+                key={setIndex}
+                className="grid w-full shrink-0 snap-start grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 xl:grid-cols-4"
+              >
+                {artistProfiles.slice(setIndex * 4, setIndex * 4 + 4).map((artistProfile) => (
+                  <article key={artistProfile.name} className="group w-full max-w-[306.14px]">
+                    <div className="relative aspect-[306.14/414] w-full overflow-hidden rounded-sm bg-gallery-ink xl:h-[414px] xl:w-[306.14px]">
+                      <img
+                        src={artistProfile.image}
+                        alt={artistProfile.name}
+                        className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                      />
+                    </div>
+                    <div className="mt-3 text-center">
+                      <p className="font-display text-base font-semibold text-gallery-wine transition group-hover:text-gallery-ink">
+                        {artistProfile.name}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             ))}
           </div>
 
           <button
             type="button"
             onClick={scrollArtistRight}
-            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            className="absolute -right-11 top-[45%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
             aria-label="Next artists"
           >
             <ChevronRight className="h-5 w-5" />
@@ -662,12 +578,12 @@ export default function Home() {
       </section>
 
       <section id="exhibitions" className="gallery-section py-12 md:py-20">
-        <p className="eyebrow">Exhibitions</p>
-        <div className="relative mt-8 md:mt-10">
+        <p className="font-wordmark text-[25px] uppercase tracking-[0.06em] text-gallery-wine md:text-[27px]">Exhibitions</p>
+        <div className="relative mx-6 mt-8 md:mx-8 md:mt-10 lg:mx-0">
           <button
             type="button"
             onClick={scrollExhibitionLeft}
-            className="absolute -left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-left-5"
+            className="absolute -left-11 top-[30%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-left-12"
             aria-label="Previous exhibitions"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -675,30 +591,44 @@ export default function Home() {
 
           <div
             ref={exhibitionScrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-3 no-scrollbar"
           >
-            {exhibitionProfiles.map((exhibition) => (
-              <article key={exhibition.title} className="group w-[280px] shrink-0 sm:w-[340px] md:w-[380px]">
-                <div className="aspect-[1.45] overflow-hidden bg-gallery-stone">
-                  <img
-                    src={exhibition.image}
-                    alt={exhibition.title}
-                    className="h-full w-full object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="mt-3">
-                  <p className="font-display text-base font-semibold text-gallery-wine">{exhibition.title}</p>
-                  <p className="font-sans text-xs text-gallery-ink/70">{exhibition.subtitle}</p>
-                  <p className="font-sans text-[10px] text-gallery-wine/60 uppercase tracking-wider mt-0.5">{exhibition.date}</p>
-                </div>
-              </article>
+            {Array.from({ length: Math.ceil(exhibitionProfiles.length / 3) }, (_, setIndex) => (
+              <div
+                key={setIndex}
+                className="grid w-full shrink-0 snap-start grid-cols-1 gap-4 sm:grid-cols-3"
+              >
+                {exhibitionProfiles.slice(setIndex * 3, setIndex * 3 + 3).map((exhibition) => (
+                  <article key={exhibition.title} className="group min-w-0">
+                    <div className="aspect-[1.37] overflow-hidden bg-gallery-stone">
+                      <img
+                        src={exhibition.image}
+                        alt={exhibition.title}
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="bg-[#F5F2EA] px-4 py-4 md:px-5 md:py-5">
+                      <p className="font-inter text-[10px] font-medium uppercase tracking-[0.08em] text-[#B08442] md:text-[11px]">
+                        Gallery Exhibition
+                      </p>
+                      <p className="mt-1.5 font-wordmark text-[20px] font-semibold uppercase leading-[1.08] text-gallery-wine md:text-[22px]">
+                        {exhibition.title}
+                      </p>
+                      <p className="mt-2 font-inter text-[11px] tracking-[0.04em] md:text-xs">
+                        <span className="font-medium uppercase text-[#B08442]">{exhibition.subtitle}</span>{" "}
+                        <span className="font-medium text-gallery-wine">{exhibition.date}</span>
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
             ))}
           </div>
 
           <button
             type="button"
             onClick={scrollExhibitionRight}
-            className="absolute -right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gallery-wine shadow-lg backdrop-blur-xs transition hover:bg-gallery-wine hover:text-white md:-right-5"
+            className="absolute -right-11 top-[30%] z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-gallery-wine/20 bg-white text-gallery-wine shadow-[0_6px_18px_rgba(93,20,20,0.32)] transition hover:bg-gallery-wine hover:text-white hover:shadow-[0_8px_22px_rgba(93,20,20,0.42)] md:-right-12"
             aria-label="Next exhibitions"
           >
             <ChevronRight className="h-5 w-5" />
@@ -712,29 +642,33 @@ export default function Home() {
       </section>
 
       <section className="px-5 py-8 text-center md:py-11">
-        <p className="font-display text-[22px] italic tracking-wide text-gallery-wine/55 md:text-[24px]">“A painting begins with a problem for which it is a solution.”</p>
-        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[19px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">Enquire about a work</a>
+        <p className="font-wordmark text-[22px] italic tracking-wide text-[#B08442] md:text-[24px]">“A painting bought well is a pleasure for season. A painting kept well is an Inheritance.”</p>
+        <a href="#contact" className="mt-4 inline-block border border-gallery-wine/30 px-4 py-2 font-display text-[19px] uppercase tracking-[0.17em] text-gallery-wine transition hover:bg-gallery-wine hover:text-white">ENQUIRE</a>
       </section>
 
       <footer id="contact" className="relative bg-gallery-wine text-white">
-        <div className="grid px-5 py-9 md:min-h-[336px] md:grid-cols-[1.75fr_0.55fr_0.55fr] md:grid-rows-[auto_auto] md:gap-x-16 md:px-10 md:pb-7 md:pt-10 lg:px-[42px]">
+        <div className="grid font-inter px-5 py-9 md:min-h-[336px] md:grid-cols-[1.75fr_0.55fr_0.55fr] md:grid-rows-[auto_auto] md:gap-x-16 md:px-10 md:pb-7 md:pt-10 lg:px-[42px]">
           <div className="md:row-span-2">
             <p className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white/85">Visit the gallery</p>
-            <h2 className="mt-7 font-display text-[23px] leading-[1.2] tracking-[0.04em] text-white/80">D-33 Defence Colony,<br /><span className="italic text-[#B08442]">New Delhi 110024</span></h2>
-            <p className="mt-9 max-w-[390px] font-sans text-[11px] leading-[2] tracking-[0.04em] text-white/60">Walk-ins are welcome during opening hours. For private viewings,<br className="hidden lg:block" /> valuation or works currently in the viewing room, we recommend<br className="hidden lg:block" /> an appointment.</p>
+            <h2 className="mt-7 font-wordmark text-[27px] font-bold leading-[1.2] tracking-[0.04em] text-white/80">D-33 Defence Colony,<br /><span className="italic text-[#B08442]">New Delhi 110024</span></h2>
+            <p className="mt-9 max-w-[600px] text-[12px] leading-[2] tracking-[0.04em] text-white/60">
+              <span className="lg:block lg:whitespace-nowrap">Walk-ins are welcome during opening hours. For private viewings,</span>{" "}
+              <span className="lg:block lg:whitespace-nowrap">valuation or works currently in the viewing room, we recommend</span>{" "}
+              <span className="lg:block lg:whitespace-nowrap">an appointment.</span>
+            </p>
           </div>
-          <div className="mt-8 font-sans text-[11px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Hours</p>
+          <div className="mt-8 text-[12px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
+            <p className="mb-3 font-sans text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Hours</p>
             <p>Monday - Saturday</p>
             <p>10pm - 5pm</p>
-            <p className="mb-3 mt-6 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Email</p>
+            <p className="mb-3 mt-6 font-sans text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Email</p>
             <p><a href="mailto:aryanartgallery@gmail.com" className="underline underline-offset-4 hover:text-white">aryanartgallery@gmail.com</a></p>
           </div>
-          <div className="mt-8 font-sans text-[11px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
-            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Telephone</p>
+          <div className="mt-8 text-[12px] leading-[1.15] tracking-[0.06em] text-white/75 md:mt-0">
+            <p className="mb-3 font-sans text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Telephone</p>
             <p>011-41551277</p>
             <p>011-41550709</p>
-            <p className="mb-3 mt-6 text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Appointments</p>
+            <p className="mb-3 mt-6 font-sans text-[10px] font-bold uppercase tracking-[0.13em] text-white/85">Appointments</p>
             <p className="underline underline-offset-4">Request a private viewing</p>
             <div className="mt-5 flex items-center gap-5 text-white">
               <a href="#" aria-label="Facebook" className="transition hover:opacity-80"><Facebook className="h-[15px] w-[15px] fill-white stroke-[2.5]" /></a>
@@ -745,14 +679,14 @@ export default function Home() {
           </div>
 
           <div className="mt-10 md:col-span-2 md:col-start-2 md:mt-0 md:self-end">
-            <p className="font-sans text-[9px] font-medium uppercase tracking-[0.18em] text-[#B08442]">
+            <p className="font-inter text-[10px] font-medium uppercase tracking-[0.18em] text-[#B08442]">
               JOIN OUR MAILING LIST
             </p>
             <form onSubmit={(e) => e.preventDefault()} className="mt-1 flex h-[25px] w-full max-w-[345px] overflow-hidden">
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="min-w-0 flex-1 bg-[#F9F5EC] px-7 font-sans text-[9px] tracking-[0.08em] text-[#222] placeholder:text-[#777] focus:outline-none"
+                className="min-w-0 flex-1 bg-[#F9F5EC] px-7 font-inter text-[10px] tracking-[0.08em] text-[#222] placeholder:text-[#777] focus:outline-none"
               />
               <button
                 type="submit"
@@ -760,25 +694,25 @@ export default function Home() {
                 className="w-[77px] bg-[#B08442] transition hover:bg-[#9E7437]"
               />
             </form>
-            <p className="mt-1 font-sans text-[7px] uppercase tracking-[0.13em] text-white/80">
+            <p className="mt-1 font-inter text-[8px] uppercase tracking-[0.13em] text-white/80">
               STAY UPDATED WITH EVENTS, EXHIBITIONS AND NEWS
             </p>
           </div>
         </div>
-        <div className="flex h-[72px] flex-col items-center justify-center bg-[#1B1712] font-display text-[#B08442]">
-          <div className="flex flex-col items-center">
-            <span className="inline-flex items-baseline text-[20px] tracking-[0.04em] md:text-[23px]">
+        <div className="flex h-[72px] flex-col items-center justify-center bg-[#1B1712] text-[#B08442]">
+          <div className="relative top-[3px] flex flex-col items-center">
+            <span className="inline-flex items-baseline whitespace-nowrap font-wordmark text-[21px] font-bold tracking-[0.04em] md:text-[24px]">
               <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
               <span className="mx-[0.25em]"></span>
               <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
               <span className="mx-[0.25em]"></span>
               <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
             </span>
-            <span className="-mt-1 block font-sans text-[8px] font-medium uppercase tracking-[0.13em] text-[#B08442]/85">
+            <span className="relative -left-[8px] -mt-[4px] block max-w-full truncate whitespace-nowrap font-inter text-[5.5px] font-bold tracking-[0.08em] [word-spacing:-0.12em] text-[#B08442]/85 min-[380px]:text-[6.5px] sm:text-[8.5px] sm:tracking-[0.15em] md:text-[9.5px]">
               INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
             </span>
           </div>
-          <div className="mt-2 h-px w-full bg-[#B08442]/75" />
+          <div className="mt-2 h-px w-full shrink-0 bg-[#B08442]" aria-hidden="true" />
           <span className="mt-1 block font-sans text-[9px] font-normal uppercase tracking-[0.07em] text-white/55">
             © 2026 ARYAN ART GALLERY &nbsp;·&nbsp; ALL RIGHTS RESERVED
           </span>

@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ["'EB Garamond'", "Georgia", "serif"],
+        wordmark: ["'Cormorant Garamond'", "Garamond", "Georgia", "serif"],
         sans: ["Montserrat", "Arial", "sans-serif"],
         inter: ["'Inter'", "sans-serif"],
       },
