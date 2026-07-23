@@ -607,7 +607,7 @@ export default function Home() {
                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="flex min-h-[140px] flex-1 flex-col bg-[#F5F2EA] px-4 py-4 md:px-5 md:py-5">
+                    <div className="flex min-h-[140px] flex-1 flex-col bg-[#F5F2EB] px-4 py-4 md:px-5 md:py-5">
                       <p className="font-inter text-[10px] font-medium uppercase tracking-[0.08em] text-[#B08442] md:text-[11px]">
                         Gallery Exhibition
                       </p>
@@ -713,7 +713,7 @@ export default function Home() {
             </span>
           </div>
           <div className="mt-2 h-px w-full shrink-0 bg-[#B08442]" aria-hidden="true" />
-          <span className="mt-1 block font-sans text-[9px] font-normal uppercase tracking-[0.07em] text-white/55">
+          <span className="relative -top-[3px] mt-1 block text-center font-sans text-[13px] font-normal uppercase tracking-[0.12em] text-white/55">
             © 2026 ARYAN ART GALLERY &nbsp;·&nbsp; ALL RIGHTS RESERVED
           </span>
         </div>
