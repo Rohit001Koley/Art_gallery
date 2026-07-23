@@ -261,9 +261,16 @@ export default function Home() {
 
             {/* Category Selection & Search Panel on Click/Focus */}
             {searchFocused && (
-              <div
-                className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md md:absolute md:left-auto md:right-0 md:top-full md:w-80"
-              >
+              <>
+                <button
+                  type="button"
+                  className="fixed inset-0 z-40 cursor-default"
+                  onClick={() => setSearchFocused(false)}
+                  aria-label="Close search"
+                />
+                <div
+                  className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md md:absolute md:left-auto md:right-0 md:top-full md:w-80"
+                >
                 <div className="mb-3 flex items-center rounded-lg border border-gallery-wine/25 bg-gallery-stone/30 px-3 focus-within:border-gallery-wine focus-within:bg-white">
                   <Search className="h-4 w-4 shrink-0 text-gallery-wine/60" />
                   <input
@@ -395,7 +402,8 @@ export default function Home() {
                     )}
                   </>
                 )}
-              </div>
+                </div>
+              </>
             )}
           </div>
           <button
