@@ -233,23 +233,23 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden bg-white text-gallery-ink">
-      <header className="fixed inset-x-0 top-0 z-40 flex h-[72px] items-center justify-between border-b border-gallery-wine/10 bg-white px-2 md:h-[92px] md:px-4 lg:px-6">
-        <a href="#top" className="leading-none" aria-label="Aryan Art Gallery home">
-          <span className="inline-flex items-baseline font-display text-[29px] tracking-[-0.045em] text-gallery-wine md:text-[35px]">
+      <header className="fixed inset-x-0 top-0 z-40 flex h-[72px] items-center gap-2 border-b border-gallery-wine/10 bg-white px-2 sm:gap-3 sm:px-3 md:h-[92px] md:px-4 lg:px-6">
+        <a href="#top" className="min-w-0 flex-1 overflow-hidden leading-none" aria-label="Aryan Art Gallery home">
+          <span className="inline-flex max-w-full items-baseline whitespace-nowrap font-display text-[clamp(18px,5.5vw,29px)] tracking-[-0.045em] text-gallery-wine md:text-[35px]">
             <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RYAN</span>
             <span className="mx-[0.25em]"></span>
             <span className="text-[1.35em] align-baseline leading-none">A</span><span className="align-baseline">RT</span>
             <span className="mx-[0.25em]"></span>
             <span className="text-[1.35em] align-baseline leading-none">G</span><span className="align-baseline">ALLERY</span>
           </span>
-          <span className="mt-1 block font-sans text-[8px] font-medium tracking-[0.15em] text-gallery-wine md:text-[10px]">
+          <span className="mt-1 block truncate whitespace-nowrap font-sans text-[5px] font-medium tracking-[0.08em] text-gallery-wine min-[380px]:text-[6px] sm:text-[8px] sm:tracking-[0.15em] md:text-[10px]">
             INDIAN OLD, MODERN &amp; CONTEMPORARY ARTS
           </span>
         </a>
 
-        <div className="flex items-center gap-3 text-gallery-wine md:gap-5">
+        <div className="flex shrink-0 items-center gap-1 text-gallery-wine sm:gap-2 md:gap-5">
           <div className="relative">
-            <div className="flex items-center rounded-full border border-gallery-wine/30 bg-gallery-stone/50 py-1.5 pl-3 pr-3 transition focus-within:border-gallery-wine focus-within:bg-white">
+            <div className="flex items-center rounded-full border border-gallery-wine/30 bg-gallery-stone/50 py-1.5 pl-2 pr-2 transition focus-within:border-gallery-wine focus-within:bg-white sm:pl-3 sm:pr-3">
               <Search className="h-3.5 w-3.5 shrink-0 text-gallery-wine/70" />
               <input
                 type="text"
@@ -258,7 +258,7 @@ export default function Home() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setTimeout(() => setSearchFocused(false), 250)}
-                className="h-6 w-28 bg-transparent pl-2 pr-1 font-sans text-xs text-gallery-ink placeholder:text-gallery-wine/60 focus:outline-none md:w-44"
+                className="h-6 w-10 bg-transparent pl-1.5 pr-0 font-sans text-[11px] text-gallery-ink placeholder:text-gallery-wine/60 focus:outline-none min-[380px]:w-16 sm:w-24 sm:pl-2 sm:pr-1 sm:text-xs md:w-44"
               />
               {searchQuery && (
                 <button
@@ -275,7 +275,7 @@ export default function Home() {
             {searchFocused && (
               <div
                 onMouseDown={(e) => e.preventDefault()}
-                className="absolute right-0 top-full z-50 mt-2 w-80 rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md"
+                className="fixed left-3 right-3 top-[70px] z-50 mt-2 w-auto max-w-[calc(100vw-1.5rem)] rounded-xl border border-gallery-wine/20 bg-white p-3.5 shadow-2xl backdrop-blur-md md:absolute md:left-auto md:right-0 md:top-full md:w-80"
               >
                 {/* Category Selection Tabs */}
                 <div className="mb-3 flex items-center gap-1 rounded-lg bg-gallery-stone/60 p-1 font-sans text-[11px] font-medium uppercase tracking-wider text-gallery-wine">
